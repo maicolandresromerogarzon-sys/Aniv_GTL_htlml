@@ -86,7 +86,7 @@ canvas{
   position:absolute;
 
   left:50%;
-  bottom:-400px;
+  bottom:-100vh;
 
   transform:translateX(-50%);
 
