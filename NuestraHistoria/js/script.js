@@ -11,6 +11,7 @@ function abrirHistoria() {
             inicio.style.display = 'none';
             principal.style.display = 'flex';
             principal.style.opacity = '0';
+            
             setTimeout(() => {
                 principal.style.transition = 'opacity 0.5s ease';
                 principal.style.opacity = '1';
@@ -39,14 +40,14 @@ function mostrarSeccion(idSeccion, boton) {
     }
 }
 
-// --- CÁLCULO PRECISO DEL TIEMPO JUNTOS (DÍAS, HORAS, MINUTOS, SEGUNDOS) ---
+// --- CÁLCULO PRECISO Y COMPATIBLE DEL TIEMPO JUNTOS ---
 function calcularTiempoJuntos() {
-    // Fecha de inicio: 13 de Febrero de 2026
-    const fechaInicio = new Date('2026-02-13T00:00:00');
+    // Formato compatible con todos los navegadores: (Año, Mes [0=Ene, 1=Feb], Día, Hora, Min, Seg)
+    const fechaInicio = new Date(2026, 1, 13, 0, 0, 0); 
     const ahora = new Date();
     const diferenciaMs = ahora - fechaInicio;
 
-    if (diferenciaMs >= 0) {
+    if (!isNaN(diferenciaMs) && diferenciaMs >= 0) {
         const totalSegundos = Math.floor(diferenciaMs / 1000);
 
         const dias = Math.floor(totalSegundos / (3600 * 24));
@@ -54,15 +55,20 @@ function calcularTiempoJuntos() {
         const minutos = Math.floor((totalSegundos % 3600) / 60);
         const segundos = Math.floor(totalSegundos % 60);
 
-        // Formatear números con cero inicial (ej. 05 en vez de 5)
+        // Formatear a dos dígitos (ej. "05" en lugar de "5")
         const formatHoras = String(horas).padStart(2, '0');
         const formatMinutos = String(minutos).padStart(2, '0');
         const formatSegundos = String(segundos).padStart(2, '0');
 
-        if (document.getElementById('dias')) document.getElementById('dias').innerText = dias;
-        if (document.getElementById('horas')) document.getElementById('horas').innerText = formatHoras;
-        if (document.getElementById('minutos')) document.getElementById('minutos').innerText = formatMinutos;
-        if (document.getElementById('segundos')) document.getElementById('segundos').innerText = formatSegundos;
+        const elemDias = document.getElementById('dias');
+        const elemHoras = document.getElementById('horas');
+        const elemMinutos = document.getElementById('minutos');
+        const elemSegundos = document.getElementById('segundos');
+
+        if (elemDias) elemDias.textContent = dias;
+        if (elemHoras) elemHoras.textContent = formatHoras;
+        if (elemMinutos) elemMinutos.textContent = formatMinutos;
+        if (elemSegundos) elemSegundos.textContent = formatSegundos;
     }
 }
 
@@ -84,8 +90,8 @@ function cerrarFoto() {
     if (visor) visor.style.display = 'none';
 }
 
-// Inicializar el reloj dinámico cada 1000 milisegundos (1 segundo)
-document.addEventListener('DOMContentLoaded', () => {
-    calcularTiempoJuntos();
-    setInterval(calcularTiempoJuntos, 1000);
-});
+// Executar inmediatamente al cargar el archivo script
+calcularTiempoJuntos();
+
+// Actualizar cada segundo (1000 ms)
+setInterval(calcularTiempoJuntos, 1000);
