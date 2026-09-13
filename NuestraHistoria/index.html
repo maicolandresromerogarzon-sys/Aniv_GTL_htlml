@@ -24,51 +24,27 @@
                 Nuestra historia
             </div>
 
-            <!-- Frasco interactivo con clases de flores restauradas -->
-            <div class="frasco-contenedor" id="btn-frasco">
+            <!-- Frasco interactivo solo con el tulipán -->
+            <div class="frasco-contenedor" onclick="abrirHistoria()">
                 <div class="brillo brillo-1"></div>
                 <div class="brillo brillo-2"></div>
-                <div class="brillo brillo-3"></div>
 
                 <div class="frasco">
-                    <div class="cuello-frasco"></div>
                     <div class="tapa-frasco"></div>
 
                     <div class="cristal">
-                        <div class="agua"></div>
+                        <div class="base-interna"></div>
 
-                        <!-- Piedras -->
-                        <div class="piedra piedra-1"></div>
-                        <div class="piedra piedra-2"></div>
-                        <div class="piedra piedra-3"></div>
-                        <div class="piedra piedra-4"></div>
-
-                        <!-- Rosa -->
-                        <div class="tallo tallo-rosa">
-                            <div class="hoja hoja-rosa-1"></div>
-                            <div class="hoja hoja-rosa-2"></div>
-                        </div>
-                        <div class="rosa">
-                            <div class="petalo petalo-1"></div>
-                            <div class="petalo petalo-2"></div>
-                            <div class="petalo petalo-3"></div>
-                            <div class="petalo petalo-4"></div>
-                            <div class="petalo petalo-5"></div>
-                            <div class="petalo petalo-6"></div>
-                            <div class="centro-rosa"></div>
+                        <!-- TALLO Y TULIPÁN ÚNICO -->
+                        <div class="tallo-tulipan">
+                            <div class="hoja-tulipan hoja-izq"></div>
+                            <div class="hoja-tulipan hoja-der"></div>
                         </div>
 
-                        <!-- Tulipán -->
-                        <div class="tallo tallo-tulipan">
-                            <div class="hoja hoja-tulipan-1"></div>
-                            <div class="hoja hoja-tulipan-2"></div>
-                        </div>
-                        <div class="tulipan">
-                            <div class="petalo-tulipan pt-1"></div>
-                            <div class="petalo-tulipan pt-2"></div>
-                            <div class="petalo-tulipan pt-3"></div>
-                            <div class="petalo-tulipan pt-4"></div>
-                            <div class="petalo-tulipan pt-5"></div>
+                        <div class="tulipan-cabeza">
+                            <div class="petalo-t pt-izq"></div>
+                            <div class="petalo-t pt-der"></div>
+                            <div class="petalo-t pt-centro"></div>
                         </div>
                     </div>
 
@@ -86,7 +62,7 @@
     <!-- ==========================================
          PANTALLA 2: PÁGINA PRINCIPAL / DIARIO
     =========================================== -->
-    <main id="pantalla-principal" class="pagina-principal" style="display: none;">
+    <main id="pantalla-principal" class="pagina-principal">
 
         <!-- MENÚ LATERAL IZQUIERDO -->
         <aside class="menu">
@@ -120,7 +96,7 @@
             </div>
         </aside>
 
-        <!-- CONTENIDO CENTRAL DE LAS SECCIONES -->
+        <!-- CONTENIDO CENTRAL -->
         <section class="contenido">
 
             <!-- SECCIÓN 1: INICIO -->
@@ -175,13 +151,6 @@
                             <p>Escribe sobre esas primeras llamadas, los mensajes hasta tarde y cómo poco a poco se fueron volviendo tan cercanos.</p>
                         </div>
                     </div>
-                    <div class="capitulo">
-                        <span class="capitulo-numero">III</span>
-                        <div>
-                            <h2>Evolución de nuestro amor</h2>
-                            <p>Todo lo que han superado juntos, los momentos bonitos y cómo han aprendido a construirse el uno para el otro día con día.</p>
-                        </div>
-                    </div>
                 </div>
             </article>
 
@@ -193,21 +162,21 @@
                 </div>
 
                 <div class="galeria">
-                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo1.jpg', 'Primer viaje juntos', '15 Feb 2026')">
+                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo1.jpg', 'Un día especial', '15 Feb 2026')">
                         <img src="img/recuerdo1.jpg" alt="Recuerdo 1">
                         <div class="recuerdo-info">
                             <span>15 Feb 2026</span>
                             <h3>Un día especial</h3>
                         </div>
                     </div>
-                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo2.jpg', 'Nuestra primera cita', '20 Feb 2026')">
+                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo2.jpg', 'Momentos inolvidables', '20 Feb 2026')">
                         <img src="img/recuerdo2.jpg" alt="Recuerdo 2">
                         <div class="recuerdo-info">
                             <span>20 Feb 2026</span>
                             <h3>Momentos inolvidables</h3>
                         </div>
                     </div>
-                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo3.jpg', 'Sonrisas compartidas', '01 Mar 2026')">
+                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo3.jpg', 'Tú y yo', '01 Mar 2026')">
                         <img src="img/recuerdo3.jpg" alt="Recuerdo 3">
                         <div class="recuerdo-info">
                             <span>01 Mar 2026</span>
@@ -233,14 +202,6 @@
                             <p>El día exacto en que decidimos empezar este hermoso camino juntos.</p>
                         </div>
                     </div>
-                    <div class="evento-linea">
-                        <div class="fecha-badge">14 FEB 2026</div>
-                        <div class="icono-corazon">♥</div>
-                        <div class="contenido-linea">
-                            <h3>Primer San Valentín</h3>
-                            <p>Un día lleno de detalles y momentos mágicos.</p>
-                        </div>
-                    </div>
                 </div>
             </article>
 
@@ -255,7 +216,6 @@
                     <div class="carta-hoja">
                         <p class="saludo">Querida persona especial,</p>
                         <p>Escribo estas palabras para recordarte lo importante que eres en mi vida. Gracias por cada sonrisa, por cada apoyo y por llenar mis días de alegría.</p>
-                        <p>Espero que esta pequeña página guarde para siempre un pedacito de lo mucho que te quiero.</p>
                         <p class="firma">Con todo mi amor,<br><span>♡</span></p>
                     </div>
                 </div>
