@@ -1,26 +1,44 @@
-/* ESTRUCTURA BASE Y FONDOS */
-body {
+/* --- CONFIGURACIÓN BASE --- */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
     background-color: #0d0d12;
-    color: #f0f0f5;
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
 }
 
+/* --- PANTALLA 1: INICIO Y FRASCO --- */
 .pantalla-inicio {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     text-align: center;
+    position: relative;
+    background: radial-gradient(circle at center, #1a1a24 0%, #0d0d12 100%);
 }
 
+.texto-superior {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: #e0d0cc;
+}
+
+/* FRASCO ETERNO */
 .frasco-contenedor {
-    cursor: pointer;
-    display: inline-block;
-    margin: 20px auto;
+    position: relative;
+    width: 180px;
+    height: 280px;
+    margin: 0 auto;
+    cursor: pointer !important;
     transition: transform 0.3s ease;
 }
 
@@ -28,19 +46,169 @@ body {
     transform: scale(1.05);
 }
 
-/* MENÚ Y PÁGINA PRINCIPAL */
+.frasco {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.tapa-frasco {
+    width: 80px;
+    height: 18px;
+    background: #8b5a2b;
+    border-radius: 6px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.cristal {
+    position: relative;
+    width: 160px;
+    height: 240px;
+    margin: 0 auto;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 80px 80px 15px 15px; /* Domo redondo superior */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(1px);
+    overflow: hidden;
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1), 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.base-interna {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15px;
+    background: #4a3525;
+}
+
+/* DIBUJO DEL TULIPÁN EN CSS */
+.tallo-tulipan {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    width: 4px;
+    height: 110px;
+    background: #4a7c59;
+    transform: translateX(-50%);
+}
+
+.hoja-tulipan {
+    position: absolute;
+    width: 18px;
+    height: 45px;
+    background: #3b6346;
+    border-radius: 0 80px 0 80px;
+}
+
+.hoja-izq {
+    bottom: 20px;
+    left: -16px;
+    transform: rotate(-25deg);
+}
+
+.hoja-der {
+    bottom: 30px;
+    right: -16px;
+    transform: scaleX(-1) rotate(-25deg);
+}
+
+.tulipan-cabeza {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    width: 40px;
+    height: 50px;
+    transform: translateX(-50%);
+}
+
+.petalo-t {
+    position: absolute;
+    background: #ff5e7e;
+    border-radius: 50px 50px 10px 10px;
+}
+
+.pt-centro {
+    width: 26px;
+    height: 48px;
+    left: 7px;
+    background: #e64a68;
+    z-index: 1;
+}
+
+.pt-izq {
+    width: 22px;
+    height: 42px;
+    left: 0;
+    transform: rotate(-12deg);
+    z-index: 2;
+}
+
+.pt-der {
+    width: 22px;
+    height: 42px;
+    right: 0;
+    transform: rotate(12deg);
+    z-index: 2;
+}
+
+.reflejo {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 12px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    transform: rotate(-5deg);
+}
+
+.instruccion {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #a0a0b0;
+    letter-spacing: 1px;
+}
+
+.corazon-pulsante {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #ff5e7e;
+    animation: pulsar 1.5s infinite;
+}
+
+@keyframes pulsar {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* --- PANTALLA 2: PÁGINA PRINCIPAL / DIARIO --- */
 .pagina-principal {
-    display: flex;
+    display: none; /* Se activa dinámicamente con JavaScript */
     min-height: 100vh;
+    width: 100%;
 }
 
 .menu {
-    width: 280px;
-    background: #14141c;
+    width: 260px;
+    background-color: #14141c;
     padding: 40px 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.menu-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.linea-menu {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
 }
 
 .boton-menu {
@@ -49,16 +217,18 @@ body {
     background: transparent;
     border: none;
     color: #a0a0b0;
-    padding: 14px 18px;
+    padding: 12px 15px;
     text-align: left;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     cursor: pointer;
     border-radius: 8px;
+    margin-bottom: 8px;
     transition: all 0.3s ease;
 }
 
-.boton-menu:hover, .boton-menu.activo-menu {
-    background: rgba(255, 255, 255, 0.08);
+.boton-menu:hover,
+.boton-menu.activo-menu {
+    background-color: rgba(255, 255, 255, 0.08);
     color: #ffffff;
 }
 
@@ -68,66 +238,73 @@ body {
     max-width: 900px;
 }
 
-/* LÍNEA DEL TIEMPO & GALERÍA */
+/* SECCIONES */
+.seccion-bloque {
+    display: block;
+}
+
+.encabezado-seccion h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    margin: 10px 0;
+}
+
+.inicio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.foto-principal img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.contador-contenedor {
+    background: #14141c;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.numero-dias {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ff5e7e;
+}
+
 .galeria {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
+    margin-top: 25px;
 }
 
 .recuerdo img {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
+/* VISOR DE FOTOS */
 .visor-foto {
     display: none;
     position: fixed;
-    top:0; left:0; width:100%; height:100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.9);
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 .visor-foto img {
     max-width: 85%;
-    max-height: 75%;
+    max-height: 80%;
     border-radius: 8px;
-}
-
-.caption-foto {
-    margin-top: 15px;
-    color: #fff;
-}
-/* VISIBILIDAD Y CURSOR PARA EL FRASCO */
-.frasco-contenedor {
-    cursor: pointer !important;
-    position: relative;
-    display: inline-block;
-}
-
-/* VISUALIZACIÓN DE TULIPÁN Y ROSA */
-.cristal .tulipan {
-    position: absolute;
-    bottom: 20px;
-}
-
-.cristal .rosa {
-    left: 40%;
-}
-
-.cristal .tulipan {
-    left: 55%;
-}
-
-/* PÁGINA PRINCIPAL OCULTA AL INICIO */
-.pagina-principal {
-    display: none;
-    width: 100%;
-    min-height: 100vh;
 }
