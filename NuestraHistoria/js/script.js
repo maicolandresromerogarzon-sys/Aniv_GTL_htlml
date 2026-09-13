@@ -40,49 +40,40 @@ function mostrarSeccion(idSeccion, boton) {
     }
 }
 
-// --- 3. CÁLCULO PRECISO (AÑOS, MESES, SEMANAS, DÍAS, HORAS, MINUTOS, SEGUNDOS) ---
+// --- 3. CÁLCULO DE EQUIVALENTES (TOTALES ACUMULADOS) ---
 function calcularTiempoJuntos() {
-    // Fecha de inicio: 13 de febrero de 2026 (13/02/2026 00:00:00)
+    // Fecha de inicio: 13 de febrero de 2026 a las 00:00:00
     const fechaInicio = new Date(2026, 1, 13, 0, 0, 0); 
     const ahora = new Date();
     
     if (ahora >= fechaInicio) {
-        // 1. Calcular Años completos
-        let anos = ahora.getFullYear() - fechaInicio.getFullYear();
-        let tempAnos = new Date(fechaInicio.getFullYear() + anos, fechaInicio.getMonth(), fechaInicio.getDate(), fechaInicio.getHours(), fechaInicio.getMinutes(), fechaInicio.getSeconds());
+        // 1. Diferencia total en milisegundos
+        const diffMs = ahora.getTime() - fechaInicio.getTime();
         
-        if (tempAnos > ahora) {
-            anos--;
-            tempAnos = new Date(fechaInicio.getFullYear() + anos, fechaInicio.getMonth(), fechaInicio.getDate(), fechaInicio.getHours(), fechaInicio.getMinutes(), fechaInicio.getSeconds());
-        }
-
-        // 2. Calcular Meses restantes
-        let meses = 0;
-        let tempMeses = new Date(tempAnos.getFullYear(), tempAnos.getMonth() + 1, tempAnos.getDate(), tempAnos.getHours(), tempAnos.getMinutes(), tempAnos.getSeconds());
-        
-        while (tempMeses <= ahora) {
-            meses++;
-            tempAnos = tempMeses;
-            tempMeses = new Date(tempAnos.getFullYear(), tempAnos.getMonth() + 1, tempAnos.getDate(), tempAnos.getHours(), tempAnos.getMinutes(), tempAnos.getSeconds());
-        }
-
-        // 3. Tiempo sobrante tras restar años y meses
-        const diffMs = ahora.getTime() - tempAnos.getTime();
+        // 2. Calcular los EQUIVALENTES TOTALES por unidad
         const totalSegundos = Math.floor(diffMs / 1000);
+        const totalMinutos = Math.floor(totalSegundos / 60);
+        const totalHoras = Math.floor(totalMinutos / 60);
+        const totalDias = Math.floor(totalHoras / 24);
+        const totalSemanas = Math.floor(totalDias / 7);
 
-        // 4. Desglose en Semanas, Días, Horas, Minutos y Segundos
-        const semanas = Math.floor(totalSegundos / (3600 * 24 * 7));
-        const dias = Math.floor((totalSegundos % (3600 * 24 * 7)) / (3600 * 24));
-        const horas = Math.floor((totalSegundos % (3600 * 24)) / 3600);
-        const minutos = Math.floor((totalSegundos % 3600) / 60);
-        const segundos = Math.floor(totalSegundos % 60);
+        // 3. Equivalentes en meses y años (Cálculo exacto de calendario)
+        let totalAnos = ahora.getFullYear() - fechaInicio.getFullYear();
+        let tempAnos = new Date(fechaInicio.getFullYear() + totalAnos, fechaInicio.getMonth(), fechaInicio.getDate(), fechaInicio.getHours(), fechaInicio.getMinutes(), fechaInicio.getSeconds());
+        if (tempAnos > ahora) {
+            totalAnos--;
+        }
 
-        // Formatear a dos dígitos
-        const formatHoras = String(horas).padStart(2, '0');
-        const formatMinutos = String(minutos).padStart(2, '0');
-        const formatSegundos = String(segundos).padStart(2, '0');
+        let totalMeses = (ahora.getFullYear() - fechaInicio.getFullYear()) * 12 + (ahora.getMonth() - fechaInicio.getMonth());
+        let tempMeses = new Date(fechaInicio.getFullYear(), fechaInicio.getMonth() + totalMeses, fechaInicio.getDate(), fechaInicio.getHours(), fechaInicio.getMinutes(), fechaInicio.getSeconds());
+        if (tempMeses > ahora) {
+            totalMeses--;
+        }
 
-        // Actualizar en la pantalla
+        // Formateador para poner puntos en los miles (ej: 5.088 horas)
+        const formatoNumero = new Intl.NumberFormat('es-CO');
+
+        // Actualizar valores en pantalla
         const elemAnos = document.getElementById('anos');
         const elemMeses = document.getElementById('meses');
         const elemSemanas = document.getElementById('semanas');
@@ -91,13 +82,15 @@ function calcularTiempoJuntos() {
         const elemMinutos = document.getElementById('minutos');
         const elemSegundos = document.getElementById('segundos');
 
-        if (elemAnos) elemAnos.textContent = anos;
-        if (elemMeses) elemMeses.textContent = meses;
-        if (elemSemanas) elemSemanas.textContent = semanas;
-        if (elemDias) elemDias.textContent = dias;
-        if (elemHoras) elemHoras.textContent = formatHoras;
-        if (elemMinutos) elemMinutos.textContent = formatMinutos;
-        if (elemSegundos) elemSegundos.textContent = formatSegundos;
+        if (elemAnos) elemAnos.textContent = totalAnos;
+        if (elemMeses) elemMeses.textContent = totalMeses;
+        if (elemSemanas) elemSemanas.textContent = totalSemanas;
+        if (elemDias) elemDias.textContent = totalDias;
+        
+        // Usamos el formato para que números muy grandes se vean organizados
+        if (elemHoras) elemHoras.textContent = formatoNumero.format(totalHoras);
+        if (elemMinutos) elemMinutos.textContent = formatoNumero.format(totalMinutos);
+        if (elemSegundos) elemSegundos.textContent = formatoNumero.format(totalSegundos);
     }
 }
 
@@ -120,8 +113,5 @@ function cerrarFoto() {
 }
 
 // --- 5. INICIALIZACIÓN CONTINUA ---
-// Se ejecuta inmediatamente al cargar el script
 calcularTiempoJuntos();
-
-// Mantiene el reloj sumando segundos sin pausar
 setInterval(calcularTiempoJuntos, 1000);
