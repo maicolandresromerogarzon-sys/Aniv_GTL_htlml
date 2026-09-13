@@ -489,3 +489,36 @@ body {
     color: #fff;
     cursor: pointer;
 }
+/* ESTILOS DE LA GRILLA SUPERIOR (4 TARJETAS) */
+.grid-bloque-superior {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.destacada-principal {
+    background: rgba(255, 77, 121, 0.1) !important;
+    border: 1px solid rgba(255, 77, 121, 0.28) !important;
+    padding: 10px 4px !important;
+    min-width: 0 !important;
+}
+
+.destacada-principal strong {
+    font-size: 1.8rem !important;
+    color: var(--color-rosa) !important;
+    text-shadow: 0 0 12px rgba(255, 77, 121, 0.35);
+}
+
+.destacada-principal span {
+    color: #ffffff !important;
+    font-size: 0.68rem !important;
+    font-weight: 500;
+}
+
+/* Ajuste responsivo para celulares pequeños */
+@media (max-width: 480px) {
+    .grid-bloque-superior {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
