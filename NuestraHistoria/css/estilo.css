@@ -104,3 +104,30 @@ body {
     margin-top: 15px;
     color: #fff;
 }
+/* VISIBILIDAD Y CURSOR PARA EL FRASCO */
+.frasco-contenedor {
+    cursor: pointer !important;
+    position: relative;
+    display: inline-block;
+}
+
+/* VISUALIZACIÓN DE TULIPÁN Y ROSA */
+.cristal .tulipan {
+    position: absolute;
+    bottom: 20px;
+}
+
+.cristal .rosa {
+    left: 40%;
+}
+
+.cristal .tulipan {
+    left: 55%;
+}
+
+/* PÁGINA PRINCIPAL OCULTA AL INICIO */
+.pagina-principal {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+}
