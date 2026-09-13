@@ -5,19 +5,21 @@
 }
 
 body {
-    background-color: #0d0d12;
+    background-color: #0b0b10;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* PANTALLA INICIO */
+/* --- PANTALLA INICIO Y FRASCO --- */
 .pantalla-inicio {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     text-align: center;
+    background: radial-gradient(circle at center, #1b1625 0%, #0b0b10 100%);
 }
 
 .entrada {
@@ -28,23 +30,23 @@ body {
 
 .texto-superior {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    color: #e0d0cc;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #f3e5e8;
+    letter-spacing: 2px;
 }
 
-/* FRASCO Y TULIPÁN SVG */
 .frasco-contenedor {
     position: relative;
-    width: 160px;
-    height: 250px;
+    width: 150px;
+    height: 240px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     margin-bottom: 20px;
 }
 
 .frasco-contenedor:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .tapa-frasco {
@@ -55,17 +57,19 @@ body {
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 .cristal {
     position: relative;
     width: 100%;
-    height: 232px; /* 250 - 18 de la tapa */
-    border: 3px solid rgba(255, 255, 255, 0.4);
-    border-radius: 70px 70px 15px 15px;
-    background: rgba(255, 255, 255, 0.05);
+    height: 222px;
+    border: 3px solid rgba(255, 255, 255, 0.35);
+    border-radius: 70px 70px 20px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(4px);
     overflow: hidden;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.15), 0 10px 30px rgba(255, 94, 126, 0.2);
 }
 
 .tulipan-svg {
@@ -73,39 +77,40 @@ body {
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 180px;
+    width: 95px;
+    height: 175px;
 }
 
 .reflejo {
     position: absolute;
     top: 20px;
     left: 15px;
-    width: 15px;
-    height: 120px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 12px;
+    height: 110px;
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 10px;
     transform: rotate(-10deg);
 }
 
 .instruccion {
-    font-size: 0.9rem;
-    color: #a0a0b0;
-    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #b3b3c3;
+    letter-spacing: 1px;
 }
 
 .corazon-pulsante {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #ff5e7e;
+    margin-top: 8px;
     animation: pulsar 1.5s infinite;
 }
 
 @keyframes pulsar {
     0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.3); opacity: 1; }
+    50% { transform: scale(1.35); opacity: 1; }
 }
 
-/* PÁGINA PRINCIPAL */
+/* --- PÁGINA PRINCIPAL --- */
 .pagina-principal {
     display: none;
     min-height: 100vh;
@@ -113,17 +118,33 @@ body {
 }
 
 .menu {
-    width: 260px;
-    background-color: #14141c;
+    width: 270px;
+    background-color: #121219;
     padding: 40px 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-corazon {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #ff5e7e;
+    margin-bottom: 5px;
 }
 
 .menu-titulo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     text-align: center;
     margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.linea-menu {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 94, 126, 0.4), transparent);
+    margin-bottom: 25px;
 }
 
 .boton-menu {
@@ -131,61 +152,186 @@ body {
     width: 100%;
     background: transparent;
     border: none;
-    color: #a0a0b0;
-    padding: 12px 15px;
+    color: #9e9eb3;
+    padding: 14px 18px;
     text-align: left;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     cursor: pointer;
-    border-radius: 8px;
-    margin-bottom: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
 }
 
 .boton-menu:hover, .boton-menu.activo-menu {
-    background-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 94, 126, 0.15);
     color: #ffffff;
+    transform: translateX(5px);
+}
+
+.menu-final {
+    margin-top: auto;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #7a7a90;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
 }
 
 .contenido {
     flex: 1;
-    padding: 50px;
+    padding: 40px;
 }
 
-.inicio-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.foto-principal img {
-    width: 100%;
-    border-radius: 12px;
-}
-
-.contador-contenedor {
-    background: #14141c;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.numero-dias {
-    font-size: 3.5rem;
-    color: #ff5e7e;
-    font-weight: bold;
-}
-
-.contador-detalles {
+/* --- TARJETA DE BIENVENIDA CON FOTO DE FONDO --- */
+.tarjeta-hero {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    /* Foto de portada de fondo con degradado oscuro */
+    background-image: linear-gradient(135deg, rgba(11, 11, 16, 0.88) 0%, rgba(20, 15, 25, 0.82) 100%), url('../img/portada.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    padding: 45px 35px;
+    min-height: 500px;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+}
+
+.hero-contenido {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.encabezado-seccion .numero-seccion {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #ff7597;
+    font-weight: 600;
+}
+
+.encabezado-seccion h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    margin: 8px 0;
+    color: #ffffff;
+}
+
+.encabezado-seccion h1 span {
+    color: #ff5e7e;
+    font-style: italic;
+}
+
+.subtitulo {
+    color: #d1d1e0;
+    font-size: 1.05rem;
+    margin-bottom: 35px;
+}
+
+/* --- TARJETA DEL CONTADOR --- */
+.contador-card {
+    background: rgba(18, 18, 26, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.contador-titulo {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #a5a5c0;
+    margin-bottom: 15px;
+}
+
+.dias-destacados {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.dias-destacados span {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #ff5e7e;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255, 94, 126, 0.4);
+}
+
+.dias-destacados small {
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* GRID DE HORAS, MINUTOS, SEGUNDOS */
+.grid-tiempo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.caja-tiempo {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 10px 16px;
+    min-width: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.caja-tiempo.destacada {
+    background: rgba(255, 94, 126, 0.12);
+    border-color: rgba(255, 94, 126, 0.3);
+}
+
+.caja-tiempo strong {
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.caja-tiempo span {
+    font-size: 0.75rem;
+    color: #8c8ca5;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.separador-dos-puntos {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ff5e7e;
+    margin-top: -12px;
+}
+
+.frase-amor {
+    font-size: 0.88rem;
+    color: #d8c3c7;
+    font-style: italic;
     margin-top: 15px;
 }
 
-/* GALERÍA Y FOTOS */
+/* VISOR DE FOTOS */
 .visor-foto {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.92);
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -193,21 +339,7 @@ body {
 }
 
 .visor-foto img {
-    max-width: 80%;
+    max-width: 85%;
     max-height: 80%;
-    border-radius: 8px;
-}
-
-.galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.recuerdo img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 12px;
 }
