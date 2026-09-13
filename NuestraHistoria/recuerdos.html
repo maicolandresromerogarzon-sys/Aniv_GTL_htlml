@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia — Recuerdos ♡</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="pagina-principal">
+        <aside class="menu">
+            <div class="menu-corazon">♡</div>
+            <div class="menu-titulo">Nuestra <span>historia</span></div>
+            <div class="linea-menu"></div>
+            <nav>
+                <a href="historia.html" class="boton-menu"><span>01</span> Inicio</a>
+                <a href="recuerdos.html" class="boton-menu activo-menu"><span>02</span> Nuestros recuerdos</a>
+                <a href="carta.html" class="boton-menu"><span>03</span> Una carta</a>
+            </nav>
+            <div class="menu-final"><span>Para siempre</span> <strong>♡</strong></div>
+        </aside>
+
+        <section class="contenido">
+            <div class="seccion activa">
+                <div class="encabezado-seccion">
+                    <p class="numero-seccion">02 — RECUERDOS</p>
+                    <h1>Nuestros recuerdos</h1>
+                    <p class="subtitulo">Pequeños momentos que queremos guardar.</p>
+                </div>
+
+                <div class="galeria">
+                    <div class="recuerdo grande" onclick="abrirFoto('img/recuerdo1.jpg')">
+                        <img src="img/recuerdo1.jpg" alt="Recuerdo 1">
+                        <div class="recuerdo-info">
+                            <span>Recuerdo 01</span>
+                            <h3>Un momento especial</h3>
+                        </div>
+                    </div>
+
+                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo2.jpg')">
+                        <img src="img/recuerdo2.jpg" alt="Recuerdo 2">
+                        <div class="recuerdo-info">
+                            <span>Recuerdo 02</span>
+                            <h3>Un día para recordar</h3>
+                        </div>
+                    </div>
+
+                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo3.jpg')">
+                        <img src="img/recuerdo3.jpg" alt="Recuerdo 3">
+                        <div class="recuerdo-info">
+                            <span>Recuerdo 03</span>
+                            <h3>Otro momento nuestro</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- VISOR DE FOTO AMPLADA -->
+    <div id="visorFoto" class="visor-foto" onclick="cerrarFoto()">
+        <button class="cerrar-foto" onclick="cerrarFoto()">×</button>
+        <img id="fotoGrande" src="" alt="Foto expandida">
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
