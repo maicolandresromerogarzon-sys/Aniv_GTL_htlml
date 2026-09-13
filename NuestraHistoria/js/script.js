@@ -4,18 +4,19 @@ function abrirHistoria() {
     const principal = document.getElementById('pantalla-principal');
 
     if (inicio && principal) {
+        inicio.style.transition = 'opacity 0.6s ease';
         inicio.style.opacity = '0';
-        inicio.style.transition = 'opacity 0.8s ease';
         
         setTimeout(() => {
             inicio.style.display = 'none';
             principal.style.display = 'flex';
             principal.style.opacity = '0';
+            
             setTimeout(() => {
-                principal.style.transition = 'opacity 0.8s ease';
+                principal.style.transition = 'opacity 0.6s ease';
                 principal.style.opacity = '1';
             }, 50);
-        }, 800);
+        }, 600);
     }
 }
 
@@ -43,7 +44,6 @@ function mostrarSeccion(idSeccion, boton) {
 
 // --- 3. CÁLCULO DINÁMICO DEL CONTADOR (DESDE EL 13/02/2026) ---
 function calcularTiempoJuntos() {
-    // Fecha de inicio: 13 de febrero de 2026
     const fechaInicio = new Date('2026-02-13T00:00:00');
     const ahora = new Date();
 
@@ -80,8 +80,13 @@ function cerrarFoto() {
     if (visor) visor.style.display = 'none';
 }
 
-// --- INICIALIZACIÓN ---
+// --- ASIGNAR EVENTO AL FRASCO Y CARGAR CONTADOR ---
 document.addEventListener('DOMContentLoaded', () => {
+    const frasco = document.getElementById('btn-frasco');
+    if (frasco) {
+        frasco.addEventListener('click', abrirHistoria);
+    }
+    
     calcularTiempoJuntos();
-    setInterval(calcularTiempoJuntos, 1000); // Actualizar cada segundo
+    setInterval(calcularTiempoJuntos, 1000);
 });
