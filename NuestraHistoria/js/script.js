@@ -41,33 +41,60 @@ function mostrarSeccion(idSeccion, boton) {
 }
 
 // --- 3. CÁLCULO EN TIEMPO REAL DEL CONTADOR (13 DE FEBRERO DE 2026) ---
+// --- CÁLCULO PRECISO (AÑOS, MESES, SEMANAS, DÍAS, HORAS, MINUTOS, SEGUNDOS) ---
 function calcularTiempoJuntos() {
-    // Formato universal seguro: Año, Mes (0=Enero, 1=Febrero), Día, Hora, Minuto, Segundo
+    // Fecha de inicio: 13 de febrero de 2026
     const fechaInicio = new Date(2026, 1, 13, 0, 0, 0); 
     const ahora = new Date();
     
-    // Diferencia en milisegundos
-    const diferenciaMs = ahora.getTime() - fechaInicio.getTime();
+    if (ahora >= fechaInicio) {
+        // 1. Calcular Años completos
+        let anos = ahora.getFullYear() - fechaInicio.getFullYear();
+        let tempAnos = new Date(fechaInicio.getFullYear() + anos, fechaInicio.getMonth(), fechaInicio.getDate(), fechaInicio.getHours(), fechaInicio.getMinutes(), fechaInicio.getSeconds());
+        
+        if (tempAnos > ahora) {
+            anos--;
+            tempAnos = new Date(fechaInicio.getFullYear() + anos, fechaInicio.getMonth(), fechaInicio.getDate(), fechaInicio.getHours(), fechaInicio.getMinutes(), fechaInicio.getSeconds());
+        }
 
-    if (diferenciaMs >= 0) {
-        const totalSegundos = Math.floor(diferenciaMs / 1000);
+        // 2. Calcular Meses restantes
+        let meses = 0;
+        let tempMeses = new Date(tempAnos.getFullYear(), tempAnos.getMonth() + 1, tempAnos.getDate(), tempAnos.getHours(), tempAnos.getMinutes(), tempAnos.getSeconds());
+        
+        while (tempMeses <= ahora) {
+            meses++;
+            tempAnos = tempMeses;
+            tempMeses = new Date(tempAnos.getFullYear(), tempAnos.getMonth() + 1, tempAnos.getDate(), tempAnos.getHours(), tempAnos.getMinutes(), tempAnos.getSeconds());
+        }
 
-        const dias = Math.floor(totalSegundos / (3600 * 24));
+        // 3. Tiempo sobrante tras restar años y meses
+        const diffMs = ahora.getTime() - tempAnos.getTime();
+        const totalSegundos = Math.floor(diffMs / 1000);
+
+        // 4. Desglose en Semanas, Días, Horas, Minutos y Segundos
+        const semanas = Math.floor(totalSegundos / (3600 * 24 * 7));
+        const dias = Math.floor((totalSegundos % (3600 * 24 * 7)) / (3600 * 24));
         const horas = Math.floor((totalSegundos % (3600 * 24)) / 3600);
         const minutos = Math.floor((totalSegundos % 3600) / 60);
         const segundos = Math.floor(totalSegundos % 60);
 
-        // Formatear a 2 dígitos (ej: "05" en lugar de "5")
+        // Formatear a dos dígitos para horas, minutos y segundos
         const formatHoras = String(horas).padStart(2, '0');
         const formatMinutos = String(minutos).padStart(2, '0');
         const formatSegundos = String(segundos).padStart(2, '0');
 
-        // Insertar en HTML garantizando la existencia de los elementos
+        // Actualizar valores en pantalla
+        const elemAnos = document.getElementById('anos');
+        const elemMeses = document.getElementById('meses');
+        const elemSemanas = document.getElementById('semanas');
         const elemDias = document.getElementById('dias');
         const elemHoras = document.getElementById('horas');
         const elemMinutos = document.getElementById('minutos');
         const elemSegundos = document.getElementById('segundos');
 
+        if (elemAnos) elemAnos.textContent = anos;
+        if (elemMeses) elemMeses.textContent = meses;
+        if (elemSemanas) elemSemanas.textContent = semanas;
         if (elemDias) elemDias.textContent = dias;
         if (elemHoras) elemHoras.textContent = formatHoras;
         if (elemMinutos) elemMinutos.textContent = formatMinutos;
