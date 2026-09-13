@@ -8,6 +8,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos para botones de edición y subida de fotos -->
+    <style>
+        .btn-accion {
+            background: #ff4d79;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            transition: transform 0.2s, background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-accion:hover {
+            background: #d93b5a;
+            transform: scale(1.05);
+        }
+        [contenteditable="true"] {
+            outline: 2px dashed #ff4d79;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
 </head>
 <body>
 
@@ -91,7 +121,7 @@
                         <div class="encabezado-seccion">
                             <span class="numero-seccion">01 — BIENVENIDA</span>
                             <h1>Tú <span>&</span> Yo</h1>
-                            <p class="subtitulo">Una historia que comenzó el <strong>13 de febrero de 2026 a las 10:00 PM </strong></p>
+                            <p class="subtitulo">Una historia que comenzó el <strong>13 de febrero de 2026 a las </strong></p>
                         </div>
 
                         <!-- RECUADRO DEL CONTADOR EN TIEMPO REAL -->
@@ -122,7 +152,7 @@
                                 </div>
                             </div>
 
-                            <!-- BLOQUE INFERIOR: HORAS, MINUTOS Y SEGUNDOS (Modificado sin los dos puntos) -->
+                            <!-- BLOQUE INFERIOR: HORAS, MINUTOS Y SEGUNDOS -->
                             <div class="grid-tiempo">
                                 <div class="caja-tiempo">
                                     <strong id="horas">0</strong>
@@ -151,10 +181,13 @@
                     <span class="numero-seccion">02 — CÓMO EMPEZÓ TODO</span>
                     <h1>Nuestra Historia</h1>
                 </div>
+                
+                <button class="btn-accion" onclick="editarTexto('texto-historia')">✏️ Editar Historia</button>
+
                 <div class="tarjeta-estilo-carta">
                     <div class="capitulo">
                         <div class="capitulo-num">I</div>
-                        <div>
+                        <div id="texto-historia">
                             <h2>El primer capítulo</h2>
                             <p>Recuerdo aquel instante como el comienzo de todo. Un día en el que ninguno de los dos sabía qué nos depararía el destino, sin imaginar que nos tenía reservado algo tan hermoso. Tal vez fue el alcohol el que me dio el valor de besarte… o quizás fue lo deslumbrante que te veías esa noche. Pero de algo estoy completamente seguro: mi amor no nació ese día. Yo ya te amaba mucho antes. Te amaba desde antes de que cruzáramos palabra alguna. Te amaba desde el 19 de diciembre de 2025, el día en que te escuché cantar con esa voz tan hermosa que se quedó grabada en mi corazón..</p>
                         </div>
@@ -168,7 +201,11 @@
                     <span class="numero-seccion">03 — GALERÍA DE FOTOS</span>
                     <h1>Nuestros Recuerdos</h1>
                 </div>
-                <div class="galeria-grid">
+
+                <button class="btn-accion" onclick="solicitarSubirFoto()">📷 Subir Foto</button>
+                <input type="file" id="inputSubirFoto" accept="image/*" style="display: none;" onchange="agregarFotoGaleria(event)">
+
+                <div class="galeria-grid" id="galeriaFotos">
                     <div class="tarjeta-recuerdo" onclick="abrirFoto('img/recuerdo1.jpg', 'Un día inolvidable', '15 Feb 2026')">
                         <img src="img/recuerdo1.jpg" alt="Recuerdo 1">
                         <div class="info-recuerdo">
@@ -176,10 +213,10 @@
                             <h3>Un día inolvidable</h3>
                         </div>
                     </div>
-                    <div class="tarjeta-recuerdo" onclick="abrirFoto('img/portada.jpg', 'Nuestra Foto Favorita', '08 Mar 2026')">
+                    <div class="tarjeta-recuerdo" onclick="abrirFoto('img/portada.jpg', 'Nuestra Foto Favorita', '13 Feb 2026')">
                         <img src="img/portada.jpg" alt="Portada">
                         <div class="info-recuerdo">
-                            <span>08 Mar 2026</span>
+                            <span>13 Feb 2026</span>
                             <h3>Juntos siempre</h3>
                         </div>
                     </div>
@@ -192,7 +229,10 @@
                     <span class="numero-seccion">04 — LÍNEA DEL TIEMPO</span>
                     <h1>Momentos Especiales</h1>
                 </div>
-                <div class="timeline">
+
+                <button class="btn-accion" onclick="agregarMomento()">➕ Agregar Momento</button>
+
+                <div class="timeline" id="lineaTiempo">
                     <div class="evento-timeline">
                         <div class="punto-corazon">♥</div>
                         <div class="tarjeta-evento">
@@ -210,7 +250,10 @@
                     <span class="numero-seccion">05 — te amo no saves cuanto</span>
                     <h1>Feliz aniversario</h1>
                 </div>
-                <div class="carta-papel">
+
+                <button class="btn-accion" onclick="editarTexto('texto-carta')">✏️ Editar Carta</button>
+
+                <div class="carta-papel" id="texto-carta">
                     <p class="My Reyna">Mi niña hermosa,</p>
                     <p>Siete meses. Suena poco cuando lo digo en voz alta, pero se siente como toda una vida cuando lo pienso con el corazón. Porque en este tiempo no solo hemos compartido días bonitos, también hemos aprendido a conocernos, a elegirnos y a quedarnos incluso cuando no todo es perfecto.
 
@@ -241,7 +284,6 @@ Y que vengan muchos más.</p>
         <div id="captionFoto" class="caption-foto"></div>
     </div>
 
-    <!-- Script actualizado con ?v=3 para limpiar la memoria caché de GitHub -->
-    <script src="js/script.js?v=3"></script>
+    <script src="js/script.js?v=4"></script>
 </body>
 </html>
