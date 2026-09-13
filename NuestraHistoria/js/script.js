@@ -4,8 +4,18 @@ function abrirHistoria() {
     const principal = document.getElementById('pantalla-principal');
 
     if (inicio && principal) {
-        inicio.style.display = 'none';
-        principal.style.display = 'flex';
+        inicio.style.opacity = '0';
+        inicio.style.transition = 'opacity 0.5s ease';
+        
+        setTimeout(() => {
+            inicio.style.display = 'none';
+            principal.style.display = 'flex';
+            principal.style.opacity = '0';
+            setTimeout(() => {
+                principal.style.transition = 'opacity 0.5s ease';
+                principal.style.opacity = '1';
+            }, 50);
+        }, 500);
     }
 }
 
@@ -29,26 +39,34 @@ function mostrarSeccion(idSeccion, boton) {
     }
 }
 
-// --- CÁLCULO DEL CONTADOR (Desde 13 de febrero de 2026) ---
+// --- CÁLCULO PRECISO DEL TIEMPO JUNTOS (DÍAS, HORAS, MINUTOS, SEGUNDOS) ---
 function calcularTiempoJuntos() {
+    // Fecha de inicio: 13 de Febrero de 2026
     const fechaInicio = new Date('2026-02-13T00:00:00');
     const ahora = new Date();
     const diferenciaMs = ahora - fechaInicio;
 
     if (diferenciaMs >= 0) {
-        const dias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
-        const horas = Math.floor((diferenciaMs / (1000 * 60 * 60)) % 24);
-        const minutos = Math.floor((diferenciaMs / (1000 * 60)) % 60);
-        const meses = Math.floor(dias / 30.44);
+        const totalSegundos = Math.floor(diferenciaMs / 1000);
+
+        const dias = Math.floor(totalSegundos / (3600 * 24));
+        const horas = Math.floor((totalSegundos % (3600 * 24)) / 3600);
+        const minutos = Math.floor((totalSegundos % 3600) / 60);
+        const segundos = Math.floor(totalSegundos % 60);
+
+        // Formatear números con cero inicial (ej. 05 en vez de 5)
+        const formatHoras = String(horas).padStart(2, '0');
+        const formatMinutos = String(minutos).padStart(2, '0');
+        const formatSegundos = String(segundos).padStart(2, '0');
 
         if (document.getElementById('dias')) document.getElementById('dias').innerText = dias;
-        if (document.getElementById('meses')) document.getElementById('meses').innerText = meses;
-        if (document.getElementById('horas')) document.getElementById('horas').innerText = horas;
-        if (document.getElementById('minutos')) document.getElementById('minutos').innerText = minutos;
+        if (document.getElementById('horas')) document.getElementById('horas').innerText = formatHoras;
+        if (document.getElementById('minutos')) document.getElementById('minutos').innerText = formatMinutos;
+        if (document.getElementById('segundos')) document.getElementById('segundos').innerText = formatSegundos;
     }
 }
 
-// --- VISOR DE FOTOS ---
+// --- VISOR DE FOTOS PARA LA GALERÍA ---
 function abrirFoto(ruta, titulo, fecha) {
     const visor = document.getElementById('visorFoto');
     const fotoGrande = document.getElementById('fotoGrande');
@@ -66,7 +84,7 @@ function cerrarFoto() {
     if (visor) visor.style.display = 'none';
 }
 
-// Inicializar el contador al cargar la página
+// Inicializar el reloj dinámico cada 1000 milisegundos (1 segundo)
 document.addEventListener('DOMContentLoaded', () => {
     calcularTiempoJuntos();
     setInterval(calcularTiempoJuntos, 1000);
