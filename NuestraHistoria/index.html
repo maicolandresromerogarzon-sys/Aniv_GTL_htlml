@@ -1,0 +1,749 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nuestra Historia ♡</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         PANTALLA DE ENTRADA
+    ====================================================== -->
+
+    <section id="inicio" class="pantalla-inicio">
+
+        <div class="estrellas"></div>
+
+        <div class="entrada">
+
+            <div class="texto-superior">
+                Nuestra historia
+            </div>
+
+            <div class="frasco-contenedor" onclick="abrirHistoria()">
+
+                <!-- Brillos -->
+                <div class="brillo brillo-1"></div>
+                <div class="brillo brillo-2"></div>
+                <div class="brillo brillo-3"></div>
+
+                <!-- Frasco -->
+                <div class="frasco">
+
+                    <div class="cuello-frasco"></div>
+
+                    <div class="tapa-frasco"></div>
+
+                    <div class="cristal">
+
+                        <!-- Agua -->
+                        <div class="agua"></div>
+
+                        <!-- Piedras -->
+                        <div class="piedra piedra-1"></div>
+                        <div class="piedra piedra-2"></div>
+                        <div class="piedra piedra-3"></div>
+                        <div class="piedra piedra-4"></div>
+
+                        <!-- Tallo de rosa -->
+                        <div class="tallo tallo-rosa">
+                            <div class="hoja hoja-rosa-1"></div>
+                            <div class="hoja hoja-rosa-2"></div>
+                        </div>
+
+                        <!-- Rosa -->
+                        <div class="rosa">
+
+                            <div class="petalo petalo-1"></div>
+                            <div class="petalo petalo-2"></div>
+                            <div class="petalo petalo-3"></div>
+                            <div class="petalo petalo-4"></div>
+                            <div class="petalo petalo-5"></div>
+                            <div class="petalo petalo-6"></div>
+
+                            <div class="centro-rosa"></div>
+
+                        </div>
+
+
+                        <!-- Tallo tulipán -->
+                        <div class="tallo tallo-tulipan">
+
+                            <div class="hoja hoja-tulipan-1"></div>
+                            <div class="hoja hoja-tulipan-2"></div>
+
+                        </div>
+
+
+                        <!-- Tulipán -->
+                        <div class="tulipan">
+
+                            <div class="petalo-tulipan pt-1"></div>
+                            <div class="petalo-tulipan pt-2"></div>
+                            <div class="petalo-tulipan pt-3"></div>
+                            <div class="petalo-tulipan pt-4"></div>
+                            <div class="petalo-tulipan pt-5"></div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Reflejo del cristal -->
+                    <div class="reflejo"></div>
+
+                </div>
+
+                <div class="sombra-frasco"></div>
+
+            </div>
+
+
+            <p class="instruccion">
+                Haz clic sobre el frasco
+            </p>
+
+            <div class="corazon-pulsante">
+                ♡
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PÁGINA PRINCIPAL
+    ====================================================== -->
+
+    <main id="historia" class="pagina-principal">
+
+        <!-- MENÚ LATERAL -->
+
+        <aside class="menu">
+
+            <div class="menu-corazon">
+                ♡
+            </div>
+
+            <div class="menu-titulo">
+                Nuestra
+                <span>historia</span>
+            </div>
+
+            <div class="linea-menu"></div>
+
+            <nav>
+
+                <button class="boton-menu activo-menu"
+                    onclick="mostrarSeccion('inicioHistoria', this)">
+                    <span>01</span>
+                    Inicio
+                </button>
+
+                <button class="boton-menu"
+                    onclick="mostrarSeccion('nuestraHistoria', this)">
+                    <span>02</span>
+                    Nuestra historia
+                </button>
+
+                <button class="boton-menu"
+                    onclick="mostrarSeccion('recuerdos', this)">
+                    <span>03</span>
+                    Nuestros recuerdos
+                </button>
+
+                <button class="boton-menu"
+                    onclick="mostrarSeccion('momentos', this)">
+                    <span>04</span>
+                    Momentos
+                </button>
+
+                <button class="boton-menu"
+                    onclick="mostrarSeccion('carta', this)">
+                    <span>05</span>
+                    Una carta
+                </button>
+
+            </nav>
+
+            <div class="menu-final">
+                <span>Para siempre</span>
+                <strong>♡</strong>
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <section class="contenido">
+
+
+            <!-- =================================================
+                 INICIO
+            ================================================== -->
+
+            <div id="inicioHistoria" class="seccion activa">
+
+                <div class="encabezado-seccion">
+
+                    <p class="numero-seccion">
+                        01 — NUESTRA HISTORIA
+                    </p>
+
+                    <h1>
+                        Tú <span>&</span> yo
+                    </h1>
+
+                    <p class="subtitulo">
+                        Una historia que comenzó el
+                        <strong>13 de febrero de 2026</strong>
+                    </p>
+
+                </div>
+
+
+                <div class="inicio-grid">
+
+                    <!-- FOTO -->
+
+                    <div class="foto-principal">
+
+                        <img src="img/portada.jpg"
+                             alt="Nuestra foto">
+
+                        <div class="marco-foto"></div>
+
+                        <div class="etiqueta-foto">
+                            Nuestro momento
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONTADOR -->
+
+                    <div class="contador-contenedor">
+
+                        <p class="contador-titulo">
+                            Llevamos juntos
+                        </p>
+
+                        <div class="numero-dias"
+                             id="dias">
+                            0
+                        </div>
+
+                        <p class="palabra-dias">
+                            días
+                        </p>
+
+                        <div class="separador"></div>
+
+                        <div class="contador-detalles">
+
+                            <div>
+                                <strong id="meses">0</strong>
+                                <span>meses</span>
+                            </div>
+
+                            <div>
+                                <strong id="horas">0</strong>
+                                <span>horas</span>
+                            </div>
+
+                            <div>
+                                <strong id="minutos">0</strong>
+                                <span>minutos</span>
+                            </div>
+
+                        </div>
+
+                        <p class="frase-contador">
+                            "Y cada día contigo<br>
+                            es mi día favorito."
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="texto-inicio">
+
+                    <p>
+                        Hay historias que comienzan sin que
+                        sepamos todo lo que llegarán a significar.
+                    </p>
+
+                    <p>
+                        Esta es la nuestra.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 NUESTRA HISTORIA
+            ================================================== -->
+
+            <div id="nuestraHistoria" class="seccion">
+
+                <div class="encabezado-seccion">
+
+                    <p class="numero-seccion">
+                        02 — EL COMIENZO
+                    </p>
+
+                    <h1>
+                        Nuestra historia
+                    </h1>
+
+                    <p class="subtitulo">
+                        Donde comenzó todo.
+                    </p>
+
+                </div>
+
+
+                <div class="historia-texto">
+
+                    <div class="capitulo">
+
+                        <span class="capitulo-numero">
+                            I
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                Cómo nos conocimos
+                            </h2>
+
+                            <p>
+                                Aquí vamos a escribir cómo nos
+                                conocimos, cómo comenzó nuestra
+                                conversación y qué fue aquello
+                                que hizo especial ese primer
+                                momento.
+                            </p>
+
+                            <p>
+                                Podemos contar todos esos pequeños
+                                detalles que quizá parecen simples,
+                                pero que terminaron siendo el inicio
+                                de algo muy bonito.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="capitulo">
+
+                        <span class="capitulo-numero">
+                            II
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                Cuando todo comenzó
+                            </h2>
+
+                            <p>
+                                Aquí podremos escribir cómo
+                                empezamos a acercarnos, nuestras
+                                primeras conversaciones, las
+                                primeras risas y esos momentos
+                                que hicieron que nuestra historia
+                                comenzara a crecer.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="capitulo">
+
+                        <span class="capitulo-numero">
+                            III
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                Lo que hemos vivido
+                            </h2>
+
+                            <p>
+                                Y aquí iremos agregando todo
+                                aquello que hemos vivido juntos:
+                                momentos felices, días difíciles,
+                                aventuras, llamadas, mensajes,
+                                risas y recuerdos.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RECUERDOS
+            ================================================== -->
+
+            <div id="recuerdos" class="seccion">
+
+                <div class="encabezado-seccion">
+
+                    <p class="numero-seccion">
+                        03 — RECUERDOS
+                    </p>
+
+                    <h1>
+                        Nuestros recuerdos
+                    </h1>
+
+                    <p class="subtitulo">
+                        Pequeños momentos que queremos guardar.
+                    </p>
+
+                </div>
+
+
+                <div class="galeria">
+
+
+                    <div class="recuerdo grande"
+                         onclick="abrirFoto('img/recuerdo1.jpg')">
+
+                        <img src="img/recuerdo1.jpg"
+                             alt="Recuerdo 1">
+
+                        <div class="recuerdo-info">
+
+                            <span>
+                                Recuerdo 01
+                            </span>
+
+                            <h3>
+                                Un momento especial
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recuerdo"
+                         onclick="abrirFoto('img/recuerdo2.jpg')">
+
+                        <img src="img/recuerdo2.jpg"
+                             alt="Recuerdo 2">
+
+                        <div class="recuerdo-info">
+
+                            <span>
+                                Recuerdo 02
+                            </span>
+
+                            <h3>
+                                Un día para recordar
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recuerdo"
+                         onclick="abrirFoto('img/recuerdo3.jpg')">
+
+                        <img src="img/recuerdo3.jpg"
+                             alt="Recuerdo 3">
+
+                        <div class="recuerdo-info">
+
+                            <span>
+                                Recuerdo 03
+                            </span>
+
+                            <h3>
+                                Otro momento nuestro
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recuerdo vacio">
+
+                        <div class="plus">
+                            +
+                        </div>
+
+                        <p>
+                            Aquí podemos agregar<br>
+                            otro recuerdo
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MOMENTOS
+            ================================================== -->
+
+            <div id="momentos" class="seccion">
+
+                <div class="encabezado-seccion">
+
+                    <p class="numero-seccion">
+                        04 — LÍNEA DEL TIEMPO
+                    </p>
+
+                    <h1>
+                        Nuestros momentos
+                    </h1>
+
+                    <p class="subtitulo">
+                        Cada fecha guarda una historia.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline">
+
+
+                    <div class="evento">
+
+                        <div class="fecha-evento">
+                            13
+                            <span>FEB</span>
+                            <small>2026</small>
+                        </div>
+
+                        <div class="punto-evento">
+                            ♡
+                        </div>
+
+                        <div class="contenido-evento">
+
+                            <span>
+                                EL COMIENZO
+                            </span>
+
+                            <h2>
+                                Nuestra historia comienza
+                            </h2>
+
+                            <p>
+                                Este fue el día en que comenzó
+                                oficialmente nuestra historia.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="evento">
+
+                        <div class="fecha-evento">
+                            ♡
+                        </div>
+
+                        <div class="punto-evento">
+                            ♡
+                        </div>
+
+                        <div class="contenido-evento">
+
+                            <span>
+                                PRÓXIMAMENTE
+                            </span>
+
+                            <h2>
+                                Nuestro próximo recuerdo
+                            </h2>
+
+                            <p>
+                                Aquí agregaremos otra fecha
+                                importante de nuestra historia.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="evento">
+
+                        <div class="fecha-evento">
+                            +
+                        </div>
+
+                        <div class="punto-evento">
+                            ♡
+                        </div>
+
+                        <div class="contenido-evento">
+
+                            <span>
+                                FUTURO
+                            </span>
+
+                            <h2>
+                                Los recuerdos que faltan
+                            </h2>
+
+                            <p>
+                                Porque todavía nos quedan
+                                muchísimas historias por vivir.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CARTA
+            ================================================== -->
+
+            <div id="carta" class="seccion">
+
+                <div class="encabezado-seccion">
+
+                    <p class="numero-seccion">
+                        05 — PARA TI
+                    </p>
+
+                    <h1>
+                        Una carta
+                    </h1>
+
+                    <p class="subtitulo">
+                        Algunas cosas simplemente se sienten mejor
+                        cuando se escriben.
+                    </p>
+
+                </div>
+
+
+                <div class="carta-contenedor">
+
+                    <div class="carta-hoja">
+
+                        <div class="carta-decoracion">
+                            ♡
+                        </div>
+
+                        <p class="saludo">
+                            Para ti:
+                        </p>
+
+                        <p>
+                            No sé exactamente en qué momento
+                            nuestra historia comenzó a convertirse
+                            en algo tan importante para mí.
+                        </p>
+
+                        <p>
+                            Pero sé que desde aquel día,
+                            cada conversación, cada risa,
+                            cada momento y cada recuerdo
+                            ha ido formando algo que quiero
+                            guardar para siempre.
+                        </p>
+
+                        <p>
+                            Gracias por estar, por compartir
+                            conmigo tus días y por formar parte
+                            de mi historia.
+                        </p>
+
+                        <p>
+                            Y si pudiera pedir algo para el futuro,
+                            sería seguir llenando estas páginas
+                            contigo.
+                        </p>
+
+                        <p class="firma">
+                            Con todo mi cariño,
+                            <br>
+                            <span>♡</span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         VISOR DE FOTOS
+    ====================================================== -->
+
+    <div id="visorFoto"
+         class="visor-foto"
+         onclick="cerrarFoto()">
+
+        <button class="cerrar-foto"
+                onclick="cerrarFoto()">
+            ×
+        </button>
+
+        <img id="fotoGrande"
+             src=""
+             alt="Foto">
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
+```
