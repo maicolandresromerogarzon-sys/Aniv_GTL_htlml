@@ -7,82 +7,230 @@
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <section id="inicio" class="pantalla-inicio">
+    <!-- ==========================================
+         PANTALLA 1: ENTRADA CON EL FRASCO
+    =========================================== -->
+    <section id="pantalla-inicio" class="pantalla-inicio">
         <div class="estrellas"></div>
-
         <div class="entrada">
-            <div class="texto-superior">
-                Nuestra historia
-            </div>
-
-            <!-- Al hacer clic en el frasco se redirige a historia.html -->
-            <a href="historia.html" class="frasco-enlace">
-                <div class="frasco-contenedor">
-                    <!-- Brillos -->
-                    <div class="brillo brillo-1"></div>
-                    <div class="brillo brillo-2"></div>
-                    <div class="brillo brillo-3"></div>
-
-                    <!-- Frasco -->
-                    <div class="frasco">
-                        <div class="cuello-frasco"></div>
-                        <div class="tapa-frasco"></div>
-                        <div class="cristal">
-                            <div class="agua"></div>
-                            
-                            <!-- Piedras -->
-                            <div class="piedra piedra-1"></div>
-                            <div class="piedra piedra-2"></div>
-                            <div class="piedra piedra-3"></div>
-                            <div class="piedra piedra-4"></div>
-
-                            <!-- Rosa -->
-                            <div class="tallo tallo-rosa">
-                                <div class="hoja hoja-rosa-1"></div>
-                                <div class="hoja hoja-rosa-2"></div>
-                            </div>
-                            <div class="rosa">
-                                <div class="petalo petalo-1"></div>
-                                <div class="petalo petalo-2"></div>
-                                <div class="petalo petalo-3"></div>
-                                <div class="petalo petalo-4"></div>
-                                <div class="petalo petalo-5"></div>
-                                <div class="petalo petalo-6"></div>
-                                <div class="centro-rosa"></div>
-                            </div>
-
-                            <!-- Tulipán -->
-                            <div class="tallo tallo-tulipan">
-                                <div class="hoja hoja-tulipan-1"></div>
-                                <div class="hoja hoja-tulipan-2"></div>
-                            </div>
-                            <div class="tulipan">
-                                <div class="petalo-tulipan pt-1"></div>
-                                <div class="petalo-tulipan pt-2"></div>
-                                <div class="petalo-tulipan pt-3"></div>
-                                <div class="petalo-tulipan pt-4"></div>
-                                <div class="petalo-tulipan pt-5"></div>
-                            </div>
+            <h1 class="texto-superior">Nuestra Historia</h1>
+            
+            <!-- Frasco interactivo -->
+            <div class="frasco-contenedor" onclick="abrirHistoria()">
+                <div class="brillo brillo-1"></div>
+                <div class="brillo brillo-2"></div>
+                <div class="frasco">
+                    <div class="tapa-frasco"></div>
+                    <div class="cristal">
+                        <!-- Rosa y Tulipán dibujados dentro del frasco -->
+                        <div class="flor rosa">
+                            <div class="petalos-rosa"></div>
+                            <div class="tallo"></div>
                         </div>
-                        <div class="reflejo"></div>
+                        <div class="flor tulipan">
+                            <div class="petalos-tulipan"></div>
+                            <div class="tallo"></div>
+                        </div>
                     </div>
-                    <div class="sombra-frasco"></div>
+                    <div class="reflejo"></div>
                 </div>
-            </a>
-
-            <p class="instruccion">
-                Haz clic sobre el frasco
-            </p>
-
-            <div class="corazon-pulsante">
-                ♡
+                <div class="sombra-frasco"></div>
             </div>
+
+            <p class="instruccion">Haz clic sobre el frasco para entrar</p>
+            <div class="corazon-pulsante">♡</div>
         </div>
     </section>
+
+    <!-- ==========================================
+         PANTALLA 2: PÁGINA PRINCIPAL / DIARIO
+    =========================================== -->
+    <main id="pantalla-principal" class="pagina-principal" style="display: none;">
+        
+        <!-- MENÚ LATERAL IZQUIERDO -->
+        <aside class="menu">
+            <div class="menu-corazon">♡</div>
+            <h2 class="menu-titulo">Nuestra <span>historia</span></h2>
+            <div class="linea-menu"></div>
+
+            <nav>
+                <button class="boton-menu activo-menu" onclick="mostrarSeccion('sec-inicio', this)">
+                    ♡ Inicio
+                </button>
+                <button class="boton-menu" onclick="mostrarSeccion('sec-historia', this)">
+                    ♡ Nuestra historia
+                </button>
+                <button class="boton-menu" onclick="mostrarSeccion('sec-recuerdos', this)">
+                    ♡ Nuestros recuerdos
+                </button>
+                <button class="boton-menu" onclick="mostrarSeccion('sec-momentos', this)">
+                    ♡ Momentos
+                </button>
+                <button class="boton-menu" onclick="mostrarSeccion('sec-carta', this)">
+                    ♡ Una carta
+                </button>
+            </nav>
+
+            <div class="menu-final">
+                <span>Para siempre</span>
+                <strong>♡</strong>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO CENTRAL DE LAS SECCIONES -->
+        <section class="contenido">
+
+            <!-- SECCIÓN 1: INICIO -->
+            <article id="sec-inicio" class="seccion-bloque activa">
+                <div class="encabezado-seccion">
+                    <p class="numero-seccion">01 — BIENVENIDA</p>
+                    <h1>Tú <span>&</span> Yo</h1>
+                    <p class="subtitulo">Una historia que comenzó el <strong>13 de febrero de 2026</strong></p>
+                </div>
+
+                <div class="inicio-grid">
+                    <div class="foto-principal">
+                        <img src="img/portada.jpg" alt="Nuestra foto">
+                        <div class="marco-foto"></div>
+                        <div class="etiqueta-foto">Nuestro momento favorito</div>
+                    </div>
+
+                    <div class="contador-contenedor">
+                        <p class="contador-titulo">Llevamos juntos</p>
+                        <div class="numero-dias" id="dias">0</div>
+                        <p class="palabra-dias">días</p>
+                        <div class="separador"></div>
+                        <div class="contador-detalles">
+                            <div><strong id="meses">0</strong><span>meses</span></div>
+                            <div><strong id="horas">0</strong><span>horas</span></div>
+                            <div><strong id="minutos">0</strong><span>minutos</span></div>
+                        </div>
+                        <p class="frase-contador">"Y cada día contigo es mi día favorito."</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- SECCIÓN 2: NUESTRA HISTORIA -->
+            <article id="sec-historia" class="seccion-bloque" style="display: none;">
+                <div class="encabezado-seccion">
+                    <p class="numero-seccion">02 — CÓMO EMPEZÓ TODO</p>
+                    <h1>Nuestra Historia</h1>
+                </div>
+
+                <div class="historia-texto">
+                    <div class="capitulo">
+                        <span class="capitulo-numero">I</span>
+                        <div>
+                            <h2>Cómo nos conocimos</h2>
+                            <p>Aquí puedes escribir cómo comenzó todo, las primeras palabras que cruzaron y esa primera impresión que cambió tus días.</p>
+                        </div>
+                    </div>
+                    <div class="capitulo">
+                        <span class="capitulo-numero">II</span>
+                        <div>
+                            <h2>Cómo empezó todo</h2>
+                            <p>Escribe sobre esas primeras llamadas, los mensajes hasta tarde y cómo poco a poco se fueron volviendo tan cercanos.</p>
+                        </div>
+                    </div>
+                    <div class="capitulo">
+                        <span class="capitulo-numero">III</span>
+                        <div>
+                            <h2>Evolución de nuestro amor</h2>
+                            <p>Todo lo que han superado juntos, los momentos bonitos y cómo han aprendido a construirse el uno para el otro día con día.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- SECCIÓN 3: NUESTROS RECUERDOS -->
+            <article id="sec-recuerdos" class="seccion-bloque" style="display: none;">
+                <div class="encabezado-seccion">
+                    <p class="numero-seccion">03 — GALERÍA</p>
+                    <h1>Nuestros Recuerdos</h1>
+                </div>
+
+                <div class="galeria">
+                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo1.jpg', 'Primer viaje juntos', '15 Feb 2026')">
+                        <img src="img/recuerdo1.jpg" alt="Recuerdo 1">
+                        <div class="recuerdo-info">
+                            <span>15 Feb 2026</span>
+                            <h3>Un día especial</h3>
+                        </div>
+                    </div>
+                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo2.jpg', 'Nuestra primera cita', '20 Feb 2026')">
+                        <img src="img/recuerdo2.jpg" alt="Recuerdo 2">
+                        <div class="recuerdo-info">
+                            <span>20 Feb 2026</span>
+                            <h3>Momentos inolvidables</h3>
+                        </div>
+                    </div>
+                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo3.jpg', 'Sonrisas compartidas', '01 Mar 2026')">
+                        <img src="img/recuerdo3.jpg" alt="Recuerdo 3">
+                        <div class="recuerdo-info">
+                            <span>01 Mar 2026</span>
+                            <h3>Simplemente tú y yo</h3>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- SECCIÓN 4: MOMENTOS (LÍNEA DEL TIEMPO) -->
+            <article id="sec-momentos" class="seccion-bloque" style="display: none;">
+                <div class="encabezado-seccion">
+                    <p class="numero-seccion">04 — LÍNEA DEL TIEMPO</p>
+                    <h1>Momentos Especiales</h1>
+                </div>
+
+                <div class="timeline">
+                    <div class="evento-linea">
+                        <div class="fecha-badge">13 FEB 2026</div>
+                        <div class="icono-corazon">♥</div>
+                        <div class="contenido-linea">
+                            <h3>Nuestro comienzo</h3>
+                            <p>El día exacto en que decidimos empezar este hermoso camino juntos.</p>
+                        </div>
+                    </div>
+                    <div class="evento-linea">
+                        <div class="fecha-badge">14 FEB 2026</div>
+                        <div class="icono-corazon">♥</div>
+                        <div class="contenido-linea">
+                            <h3>Primer San Valentín</h3>
+                            <p>Un día lleno de detalles y momentos mágicos.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- SECCIÓN 5: UNA CARTA -->
+            <article id="sec-carta" class="seccion-bloque" style="display: none;">
+                <div class="encabezado-seccion">
+                    <p class="numero-seccion">05 — MI CORAZÓN</p>
+                    <h1>Una Carta Para Ti</h1>
+                </div>
+
+                <div class="carta-contenedor">
+                    <div class="carta-hoja">
+                        <p class="saludo">Querida personas especial,</p>
+                        <p>Escribo estas palabras para recordarte lo importante que eres en mi vida. Gracias por cada sonrisa, por cada apoyo y por llenar mis días de alegría.</p>
+                        <p>Espero que esta pequeña página guarde para siempre un pedacito de lo mucho que te quiero.</p>
+                        <p class="firma">Con todo mi amor,<br><span>♡</span></p>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- VISOR DE FOTOS GRANDES -->
+    <div id="visorFoto" class="visor-foto" onclick="cerrarFoto()">
+        <span class="cerrar-btn">&times;</span>
+        <img id="fotoGrande" src="" alt="Foto en grande">
+        <div id="captionFoto" class="caption-foto"></div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
