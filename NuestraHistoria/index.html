@@ -9,33 +9,38 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Estilos para botones de edición y subida de fotos -->
     <style>
+        .contenedor-btn-accion {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
         .btn-accion {
             background: #ff4d79;
-            color: white;
+            color: #ffffff;
             border: none;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 20px;
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 15px;
-            transition: transform 0.2s, background 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            pointer-events: auto !important;
+            user-select: none;
         }
         .btn-accion:hover {
             background: #d93b5a;
-            transform: scale(1.05);
+            transform: translateY(-2px);
         }
         [contenteditable="true"] {
-            outline: 2px dashed #ff4d79;
-            padding: 10px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
+            outline: 2px dashed #ff4d79 !important;
+            padding: 10px !important;
+            border-radius: 8px !important;
+            background: rgba(255, 255, 255, 0.05) !important;
         }
     </style>
 </head>
@@ -53,17 +58,12 @@
                 <div class="aura-brillo"></div>
                 <div class="tapa-frasco"></div>
                 <div class="cristal">
-                    <!-- Tulipán Ilustrado en SVG -->
                     <svg class="tulipan-svg" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Tallo -->
                         <path d="M50,85 Q50,150 50,200" stroke="#3d6e4b" stroke-width="5" fill="none" stroke-linecap="round"/>
-                        <!-- Hojas -->
                         <path d="M50,165 Q25,135 15,105 Q38,125 50,165" fill="#2d5237" />
                         <path d="M50,135 Q75,105 85,75 Q62,95 50,135" fill="#2d5237" />
-                        <!-- Pétalos traseros -->
                         <path d="M50,90 C28,90 18,40 33,18 C45,42 50,68 50,90" fill="#d93b5a" />
                         <path d="M50,90 C72,90 82,40 67,18 C55,42 50,68 50,90" fill="#d93b5a" />
-                        <!-- Pétalo central principal -->
                         <path d="M50,92 C32,70 32,28 50,12 C68,28 68,70 50,92" fill="#ff4d79" />
                     </svg>
                     <div class="reflejo-cristal"></div>
@@ -86,19 +86,19 @@
             <div class="linea-menu"></div>
 
             <nav>
-                <button class="boton-menu activo-menu" onclick="mostrarSeccion('sec-inicio', this)">
+                <button type="button" class="boton-menu activo-menu" onclick="mostrarSeccion('sec-inicio', this)">
                     <span class="icono-nav">♥</span> Inicio
                 </button>
-                <button class="boton-menu" onclick="mostrarSeccion('sec-historia', this)">
+                <button type="button" class="boton-menu" onclick="mostrarSeccion('sec-historia', this)">
                     <span class="icono-nav">♥</span> Nuestra historia
                 </button>
-                <button class="boton-menu" onclick="mostrarSeccion('sec-recuerdos', this)">
+                <button type="button" class="boton-menu" onclick="mostrarSeccion('sec-recuerdos', this)">
                     <span class="icono-nav">♥</span> Nuestros recuerdos
                 </button>
-                <button class="boton-menu" onclick="mostrarSeccion('sec-momentos', this)">
+                <button type="button" class="boton-menu" onclick="mostrarSeccion('sec-momentos', this)">
                     <span class="icono-nav">♥</span> Momentos
                 </button>
-                <button class="boton-menu" onclick="mostrarSeccion('sec-carta', this)">
+                <button type="button" class="boton-menu" onclick="mostrarSeccion('sec-carta', this)">
                     <span class="icono-nav">♥</span> Una carta
                 </button>
             </nav>
@@ -182,7 +182,9 @@
                     <h1>Nuestra Historia</h1>
                 </div>
                 
-                <button class="btn-accion" onclick="editarTexto('texto-historia')">✏️ Editar Historia</button>
+                <div class="contenedor-btn-accion">
+                    <button type="button" class="btn-accion" onclick="editarTexto('texto-historia')">✏️ Editar Historia</button>
+                </div>
 
                 <div class="tarjeta-estilo-carta">
                     <div class="capitulo">
@@ -202,7 +204,9 @@
                     <h1>Nuestros Recuerdos</h1>
                 </div>
 
-                <button class="btn-accion" onclick="solicitarSubirFoto()">📷 Subir Foto</button>
+                <div class="contenedor-btn-accion">
+                    <button type="button" class="btn-accion" onclick="solicitarSubirFoto()">📷 Subir Foto</button>
+                </div>
                 <input type="file" id="inputSubirFoto" accept="image/*" style="display: none;" onchange="agregarFotoGaleria(event)">
 
                 <div class="galeria-grid" id="galeriaFotos">
@@ -230,7 +234,9 @@
                     <h1>Momentos Especiales</h1>
                 </div>
 
-                <button class="btn-accion" onclick="agregarMomento()">➕ Agregar Momento</button>
+                <div class="contenedor-btn-accion">
+                    <button type="button" class="btn-accion" onclick="agregarMomento()">➕ Agregar Momento</button>
+                </div>
 
                 <div class="timeline" id="lineaTiempo">
                     <div class="evento-timeline">
@@ -251,7 +257,9 @@
                     <h1>Feliz aniversario</h1>
                 </div>
 
-                <button class="btn-accion" onclick="editarTexto('texto-carta')">✏️ Editar Carta</button>
+                <div class="contenedor-btn-accion">
+                    <button type="button" class="btn-accion" onclick="editarTexto('texto-carta')">✏️ Editar Carta</button>
+                </div>
 
                 <div class="carta-papel" id="texto-carta">
                     <p class="My Reyna">Mi niña hermosa,</p>
@@ -284,6 +292,6 @@ Y que vengan muchos más.</p>
         <div id="captionFoto" class="caption-foto"></div>
     </div>
 
-    <script src="js/script.js?v=4"></script>
+    <script src="js/script.js?v=5"></script>
 </body>
 </html>
