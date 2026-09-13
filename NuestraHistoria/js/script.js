@@ -1,31 +1,19 @@
-// --- 1. TRANSICIÓN DE ENTRADA AL DAR CLIC EN EL FRASCO ---
+// --- ACCIÓN DE CLIC EN EL FRASCO ---
 function abrirHistoria() {
     const inicio = document.getElementById('pantalla-inicio');
     const principal = document.getElementById('pantalla-principal');
 
     if (inicio && principal) {
-        inicio.style.transition = 'opacity 0.6s ease';
-        inicio.style.opacity = '0';
-        
-        setTimeout(() => {
-            inicio.style.display = 'none';
-            principal.style.display = 'flex';
-            principal.style.opacity = '0';
-            
-            setTimeout(() => {
-                principal.style.transition = 'opacity 0.6s ease';
-                principal.style.opacity = '1';
-            }, 50);
-        }, 600);
+        inicio.style.display = 'none';
+        principal.style.display = 'flex';
     }
 }
 
-// --- 2. NAVEGACIÓN ENTRE SECCIONES DEL MENÚ ---
+// --- CAMBIO DE VISTAS EN EL MENÚ ---
 function mostrarSeccion(idSeccion, boton) {
     const bloques = document.querySelectorAll('.seccion-bloque');
     bloques.forEach(bloque => {
         bloque.style.display = 'none';
-        bloque.classList.remove('activa');
     });
 
     const botones = document.querySelectorAll('.boton-menu');
@@ -34,7 +22,6 @@ function mostrarSeccion(idSeccion, boton) {
     const objetivo = document.getElementById(idSeccion);
     if (objetivo) {
         objetivo.style.display = 'block';
-        objetivo.classList.add('activa');
     }
 
     if (boton) {
@@ -42,7 +29,7 @@ function mostrarSeccion(idSeccion, boton) {
     }
 }
 
-// --- 3. CÁLCULO DINÁMICO DEL CONTADOR (DESDE EL 13/02/2026) ---
+// --- CÁLCULO DEL TIEMPO JUNTOS DESDE EL 13/02/2026 ---
 function calcularTiempoJuntos() {
     const fechaInicio = new Date('2026-02-13T00:00:00');
     const ahora = new Date();
@@ -62,7 +49,7 @@ function calcularTiempoJuntos() {
     }
 }
 
-// --- 4. VISOR DE FOTOS ---
+// --- AMPLIAR FOTOS EN LA GALERÍA ---
 function abrirFoto(ruta, titulo, fecha) {
     const visor = document.getElementById('visorFoto');
     const fotoGrande = document.getElementById('fotoGrande');
@@ -80,13 +67,8 @@ function cerrarFoto() {
     if (visor) visor.style.display = 'none';
 }
 
-// --- ASIGNAR EVENTO AL FRASCO Y CARGAR CONTADOR ---
+// Cargar contador al iniciar
 document.addEventListener('DOMContentLoaded', () => {
-    const frasco = document.getElementById('btn-frasco');
-    if (frasco) {
-        frasco.addEventListener('click', abrirHistoria);
-    }
-    
     calcularTiempoJuntos();
     setInterval(calcularTiempoJuntos, 1000);
 });
