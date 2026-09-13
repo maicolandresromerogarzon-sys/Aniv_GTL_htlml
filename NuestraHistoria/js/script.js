@@ -1,11 +1,11 @@
-// --- ABRIR LA HISTORIA DESDE EL FRASCO ---
+// --- 1. ABRIR HISTORIA AL HACER CLIC EN EL FRASCO ---
 function abrirHistoria() {
     const inicio = document.getElementById('pantalla-inicio');
     const principal = document.getElementById('pantalla-principal');
 
     if (inicio && principal) {
+        inicio.style.transition = 'opacity 0.6s ease';
         inicio.style.opacity = '0';
-        inicio.style.transition = 'opacity 0.5s ease';
         
         setTimeout(() => {
             inicio.style.display = 'none';
@@ -13,14 +13,14 @@ function abrirHistoria() {
             principal.style.opacity = '0';
             
             setTimeout(() => {
-                principal.style.transition = 'opacity 0.5s ease';
+                principal.style.transition = 'opacity 0.6s ease';
                 principal.style.opacity = '1';
             }, 50);
-        }, 500);
+        }, 600);
     }
 }
 
-// --- NAVEGACIÓN DEL MENÚ ---
+// --- 2. CAMBIAR SECCIONES DEL MENÚ ---
 function mostrarSeccion(idSeccion, boton) {
     const bloques = document.querySelectorAll('.seccion-bloque');
     bloques.forEach(bloque => {
@@ -40,14 +40,16 @@ function mostrarSeccion(idSeccion, boton) {
     }
 }
 
-// --- CÁLCULO PRECISO Y COMPATIBLE DEL TIEMPO JUNTOS ---
+// --- 3. CÁLCULO EN TIEMPO REAL DEL CONTADOR (13 DE FEBRERO DE 2026) ---
 function calcularTiempoJuntos() {
-    // Formato compatible con todos los navegadores: (Año, Mes [0=Ene, 1=Feb], Día, Hora, Min, Seg)
+    // Formato universal seguro: Año, Mes (0=Enero, 1=Febrero), Día, Hora, Minuto, Segundo
     const fechaInicio = new Date(2026, 1, 13, 0, 0, 0); 
     const ahora = new Date();
-    const diferenciaMs = ahora - fechaInicio;
+    
+    // Diferencia en milisegundos
+    const diferenciaMs = ahora.getTime() - fechaInicio.getTime();
 
-    if (!isNaN(diferenciaMs) && diferenciaMs >= 0) {
+    if (diferenciaMs >= 0) {
         const totalSegundos = Math.floor(diferenciaMs / 1000);
 
         const dias = Math.floor(totalSegundos / (3600 * 24));
@@ -55,11 +57,12 @@ function calcularTiempoJuntos() {
         const minutos = Math.floor((totalSegundos % 3600) / 60);
         const segundos = Math.floor(totalSegundos % 60);
 
-        // Formatear a dos dígitos (ej. "05" en lugar de "5")
+        // Formatear a 2 dígitos (ej: "05" en lugar de "5")
         const formatHoras = String(horas).padStart(2, '0');
         const formatMinutos = String(minutos).padStart(2, '0');
         const formatSegundos = String(segundos).padStart(2, '0');
 
+        // Insertar en HTML garantizando la existencia de los elementos
         const elemDias = document.getElementById('dias');
         const elemHoras = document.getElementById('horas');
         const elemMinutos = document.getElementById('minutos');
@@ -72,7 +75,7 @@ function calcularTiempoJuntos() {
     }
 }
 
-// --- VISOR DE FOTOS PARA LA GALERÍA ---
+// --- 4. VISOR DE FOTOS ---
 function abrirFoto(ruta, titulo, fecha) {
     const visor = document.getElementById('visorFoto');
     const fotoGrande = document.getElementById('fotoGrande');
@@ -90,8 +93,9 @@ function cerrarFoto() {
     if (visor) visor.style.display = 'none';
 }
 
-// Executar inmediatamente al cargar el archivo script
+// --- INICIALIZACIÓN CONTINUA ---
+// Se ejecuta inmediatamente al cargar el script
 calcularTiempoJuntos();
 
-// Actualizar cada segundo (1000 ms)
+// Mantiene el reloj sumando segundos sin pausar
 setInterval(calcularTiempoJuntos, 1000);
