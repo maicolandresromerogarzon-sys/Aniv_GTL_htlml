@@ -7,80 +7,104 @@
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- PANTALLA 1: ENTRADA CON EL FRASCO -->
+    <!-- PANTALLA 1: INICIO CON EL FRASCO MÁGICO -->
     <section id="pantalla-inicio" class="pantalla-inicio">
+        <div class="luces-fondo"></div>
         <div class="entrada">
+            <span class="etiqueta-superior">Bienvenidos a</span>
             <h1 class="texto-superior">Nuestra historia</h1>
 
-            <!-- Frasco interactivo con Tulipán SVG -->
-            <div class="frasco-contenedor" onclick="abrirHistoria()">
+            <!-- Frasco Interactivo -->
+            <div class="frasco-contenedor" id="btn-frasco" onclick="abrirHistoria()">
+                <div class="aura-brillo"></div>
                 <div class="tapa-frasco"></div>
                 <div class="cristal">
+                    <!-- Tulipán Ilustrado en SVG -->
                     <svg class="tulipan-svg" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50,80 Q50,150 50,200" stroke="#4a7c59" stroke-width="5" fill="none" stroke-linecap="round"/>
-                        <path d="M50,170 Q30,140 20,110 Q40,130 50,170" fill="#3b6346" />
-                        <path d="M50,140 Q70,110 80,80 Q60,100 50,140" fill="#3b6346" />
-                        <path d="M50,90 C30,90 20,40 35,20 C45,45 50,70 50,90" fill="#e64a68" />
-                        <path d="M50,90 C70,90 80,40 65,20 C55,45 50,70 50,90" fill="#e64a68" />
-                        <path d="M50,90 C35,70 35,30 50,15 C65,30 65,70 50,90" fill="#ff5e7e" />
+                        <!-- Tallo -->
+                        <path d="M50,85 Q50,150 50,200" stroke="#3d6e4b" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <!-- Hojas -->
+                        <path d="M50,165 Q25,135 15,105 Q38,125 50,165" fill="#2d5237" />
+                        <path d="M50,135 Q75,105 85,75 Q62,95 50,135" fill="#2d5237" />
+                        <!-- Pétalos traseros -->
+                        <path d="M50,90 C28,90 18,40 33,18 C45,42 50,68 50,90" fill="#d93b5a" />
+                        <path d="M50,90 C72,90 82,40 67,18 C55,42 50,68 50,90" fill="#d93b5a" />
+                        <!-- Pétalo central principal -->
+                        <path d="M50,92 C32,70 32,28 50,12 C68,28 68,70 50,92" fill="#ff4d79" />
                     </svg>
-                    <div class="reflejo"></div>
+                    <div class="reflejo-cristal"></div>
                 </div>
+                <div class="base-sombra"></div>
             </div>
 
-            <p class="instruccion">Haz clic sobre el frasco</p>
-            <div class="corazon-pulsante">♡</div>
+            <p class="instruccion">Haz clic en el frasco para entrar</p>
+            <div class="corazon-pulsante">♥</div>
         </div>
     </section>
 
-    <!-- PANTALLA 2: PÁGINA PRINCIPAL -->
+    <!-- PANTALLA 2: PÁGINA PRINCIPAL / DIARIO -->
     <main id="pantalla-principal" class="pagina-principal">
         
-        <!-- MENÚ LATERAL -->
+        <!-- MENÚ LATERAL IZQUIERDO -->
         <aside class="menu">
-            <div class="menu-corazon">♡</div>
-            <div class="menu-titulo">Nuestra <span>historia</span></div>
+            <div class="menu-corazon">♥</div>
+            <h2 class="menu-titulo">Nuestra <span>historia</span></h2>
             <div class="linea-menu"></div>
 
             <nav>
-                <button class="boton-menu activo-menu" onclick="mostrarSeccion('sec-inicio', this)">♡ Inicio</button>
-                <button class="boton-menu" onclick="mostrarSeccion('sec-historia', this)">♡ Nuestra historia</button>
-                <button class="boton-menu" onclick="mostrarSeccion('sec-recuerdos', this)">♡ Nuestros recuerdos</button>
-                <button class="boton-menu" onclick="mostrarSeccion('sec-momentos', this)">♡ Momentos</button>
-                <button class="boton-menu" onclick="mostrarSeccion('sec-carta', this)">♡ Una carta</button>
+                <button class="boton-menu activo-menu" onclick="mostrarSeccion('sec-inicio', this)">
+                    <span class="icono-nav">♥</span> Inicio
+                </button>
+                <button class="boton-menu" onclick="mostrarSeccion('sec-historia', this)">
+                    <span class="icono-nav">♥</span> Nuestra historia
+                </button>
+                <button class="boton-menu" onclick="mostrarSeccion('sec-recuerdos', this)">
+                    <span class="icono-nav">♥</span> Nuestros recuerdos
+                </button>
+                <button class="boton-menu" onclick="mostrarSeccion('sec-momentos', this)">
+                    <span class="icono-nav">♥</span> Momentos
+                </button>
+                <button class="boton-menu" onclick="mostrarSeccion('sec-carta', this)">
+                    <span class="icono-nav">♥</span> Una carta
+                </button>
             </nav>
 
             <div class="menu-final">
                 <span>Para siempre</span>
-                <strong>♡</strong>
+                <strong class="corazon-mini">♥</strong>
             </div>
         </aside>
 
-        <!-- CONTENIDO CENTRAL -->
+        <!-- CONTENIDO PRINCIPAL -->
         <section class="contenido">
             
-            <!-- SECCIÓN 1: INICIO Y CONTADOR CON FOTO DE FONDO -->
+            <!-- SECCIÓN 1: INICIO Y CONTADOR VIVO -->
             <article id="sec-inicio" class="seccion-bloque activa">
                 <div class="tarjeta-hero">
-                    <div class="overlay-foto"></div>
+                    <div class="overlay-oscuridad"></div>
                     <div class="hero-contenido">
+                        
                         <div class="encabezado-seccion">
-                            <p class="numero-seccion">01 — BIENVENIDA</p>
+                            <span class="numero-seccion">01 — BIENVENIDA</span>
                             <h1>Tú <span>&</span> Yo</h1>
                             <p class="subtitulo">Una historia que comenzó el <strong>13 de febrero de 2026</strong></p>
                         </div>
 
-                        <!-- CONTADOR TIEMPO JUNTOS -->
+                        <!-- RECUADRO DEL CONTADOR EN TIEMPO REAL -->
                         <div class="contador-card">
-                            <h2 class="contador-titulo">Llevamos juntos</h2>
+                            <div class="badge-amor">
+                                <span class="punto-vivo"></span> EN TIEMPO REAL
+                            </div>
+                            
+                            <h3 class="contador-titulo">Llevamos juntos</h3>
                             
                             <div class="dias-destacados">
                                 <span id="dias">0</span>
-                                <small>días</small>
+                                <small>DÍAS</small>
                             </div>
 
                             <div class="grid-tiempo">
@@ -88,20 +112,21 @@
                                     <strong id="horas">00</strong>
                                     <span>Horas</span>
                                 </div>
-                                <div class="separador-dos-puntos">:</div>
+                                <span class="dos-puntos">:</span>
                                 <div class="caja-tiempo">
                                     <strong id="minutos">00</strong>
                                     <span>Minutos</span>
                                 </div>
-                                <div class="separador-dos-puntos">:</div>
-                                <div class="caja-tiempo destacada">
+                                <span class="dos-puntos">:</span>
+                                <div class="caja-tiempo viva">
                                     <strong id="segundos">00</strong>
                                     <span>Segundos</span>
                                 </div>
                             </div>
                             
-                            <p class="frase-amor">"Y cada segundo a tu lado cuenta para siempre ♡"</p>
+                            <p class="frase-amor">"Y cada segundo a tu lado es mi momento favorito del día ♡"</p>
                         </div>
+
                     </div>
                 </div>
             </article>
@@ -109,27 +134,39 @@
             <!-- SECCIÓN 2: NUESTRA HISTORIA -->
             <article id="sec-historia" class="seccion-bloque" style="display: none;">
                 <div class="encabezado-seccion">
-                    <p class="numero-seccion">02 — CÓMO EMPEZÓ TODO</p>
+                    <span class="numero-seccion">02 — CÓMO EMPEZÓ TODO</span>
                     <h1>Nuestra Historia</h1>
                 </div>
-                <div class="historia-texto">
-                    <h2>Cómo nos conocimos</h2>
-                    <p>Aquí escribiremos cómo comenzó nuestra historia, la primera conversación y ese momento especial que lo inició todo.</p>
+                <div class="tarjeta-estilo-carta">
+                    <div class="capitulo">
+                        <div class="capitulo-num">I</div>
+                        <div>
+                            <h2>El primer capítulo</h2>
+                            <p>Aquí puedes escribir cómo se conocieron, esas primeras conversaciones por mensaje y los momentos inolvidables que hicieron florecer todo.</p>
+                        </div>
+                    </div>
                 </div>
             </article>
 
-            <!-- SECCIÓN 3: RECUERDOS -->
+            <!-- SECCIÓN 3: NUESTROS RECUERDOS -->
             <article id="sec-recuerdos" class="seccion-bloque" style="display: none;">
                 <div class="encabezado-seccion">
-                    <p class="numero-seccion">03 — GALERÍA</p>
+                    <span class="numero-seccion">03 — GALERÍA DE FOTOS</span>
                     <h1>Nuestros Recuerdos</h1>
                 </div>
-                <div class="galeria">
-                    <div class="recuerdo" onclick="abrirFoto('img/recuerdo1.jpg', 'Un día especial', '15 Feb 2026')">
+                <div class="galeria-grid">
+                    <div class="tarjeta-recuerdo" onclick="abrirFoto('img/recuerdo1.jpg', 'Un día inolvidable', '15 Feb 2026')">
                         <img src="img/recuerdo1.jpg" alt="Recuerdo 1">
-                        <div class="recuerdo-info">
+                        <div class="info-recuerdo">
                             <span>15 Feb 2026</span>
-                            <h3>Un día especial</h3>
+                            <h3>Un día inolvidable</h3>
+                        </div>
+                    </div>
+                    <div class="tarjeta-recuerdo" onclick="abrirFoto('img/portada.jpg', 'Nuestra Foto Favorita', '13 Feb 2026')">
+                        <img src="img/portada.jpg" alt="Portada">
+                        <div class="info-recuerdo">
+                            <span>13 Feb 2026</span>
+                            <h3>Juntos siempre</h3>
                         </div>
                     </div>
                 </div>
@@ -138,40 +175,42 @@
             <!-- SECCIÓN 4: MOMENTOS -->
             <article id="sec-momentos" class="seccion-bloque" style="display: none;">
                 <div class="encabezado-seccion">
-                    <p class="numero-seccion">04 — LÍNEA DEL TIEMPO</p>
+                    <span class="numero-seccion">04 — LÍNEA DEL TIEMPO</span>
                     <h1>Momentos Especiales</h1>
                 </div>
                 <div class="timeline">
-                    <div class="evento-linea">
-                        <div class="fecha-badge">13 FEB 2026</div>
-                        <div class="contenido-linea">
-                            <h3>Nuestro comienzo</h3>
-                            <p>El día exacto en que decidimos empezar este hermoso camino juntos.</p>
+                    <div class="evento-timeline">
+                        <div class="punto-corazon">♥</div>
+                        <div class="tarjeta-evento">
+                            <span class="fecha-badge">13 DE FEBRERO, 2026</span>
+                            <h3>El Día Que Comenzó Todo</h3>
+                            <p>Decidimos empezar a escribir esta hermosa historia juntos.</p>
                         </div>
                     </div>
                 </div>
             </article>
 
-            <!-- SECCIÓN 5: CARTA -->
+            <!-- SECCIÓN 5: UNA CARTA -->
             <article id="sec-carta" class="seccion-bloque" style="display: none;">
                 <div class="encabezado-seccion">
-                    <p class="numero-seccion">05 — MI CORAZÓN</p>
+                    <span class="numero-seccion">05 — DESDE EL CORAZÓN</span>
                     <h1>Una Carta Para Ti</h1>
                 </div>
-                <div class="carta-contenedor">
+                <div class="carta-papel">
                     <p class="saludo">Querida persona especial,</p>
-                    <p>Escribo estas palabras para recordarte lo importante que eres en mi vida. Gracias por cada sonrisa, por cada apoyo y por llenar mis días de alegría.</p>
-                    <p class="firma">Con todo mi amor,<br><span>♡</span></p>
+                    <p>Escribo estas palabras para recordarte lo mucho que significas para mí. Gracias por cada sonrisa, por tu compañía incondicional y por hacer que cada día tenga un toque de magia.</p>
+                    <p>Esta página fue creada con todo mi cariño para guardar siempre lo hermoso que construimos día a día.</p>
+                    <p class="firma">Con todo mi amor,<br><span>♥</span></p>
                 </div>
             </article>
 
         </section>
     </main>
 
-    <!-- VISOR DE FOTOS -->
+    <!-- MODAL VISOR DE FOTOS EN GRANDE -->
     <div id="visorFoto" class="visor-foto" onclick="cerrarFoto()">
         <span class="cerrar-btn">&times;</span>
-        <img id="fotoGrande" src="" alt="Foto">
+        <img id="fotoGrande" src="" alt="Foto expandida">
         <div id="captionFoto" class="caption-foto"></div>
     </div>
 
