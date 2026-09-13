@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -21,15 +21,11 @@
                 <div class="tapa-frasco"></div>
                 <div class="cristal">
                     <svg class="tulipan-svg" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Tallo -->
                         <path d="M50,80 Q50,150 50,200" stroke="#4a7c59" stroke-width="5" fill="none" stroke-linecap="round"/>
-                        <!-- Hojas -->
                         <path d="M50,170 Q30,140 20,110 Q40,130 50,170" fill="#3b6346" />
                         <path d="M50,140 Q70,110 80,80 Q60,100 50,140" fill="#3b6346" />
-                        <!-- Pétalos traseros -->
                         <path d="M50,90 C30,90 20,40 35,20 C45,45 50,70 50,90" fill="#e64a68" />
                         <path d="M50,90 C70,90 80,40 65,20 C55,45 50,70 50,90" fill="#e64a68" />
-                        <!-- Pétalo central -->
                         <path d="M50,90 C35,70 35,30 50,15 C65,30 65,70 50,90" fill="#ff5e7e" />
                     </svg>
                     <div class="reflejo"></div>
@@ -66,33 +62,51 @@
 
         <!-- CONTENIDO CENTRAL -->
         <section class="contenido">
-            <!-- SECCIÓN INICIO -->
+            
+            <!-- SECCIÓN 1: INICIO Y CONTADOR CON FOTO DE FONDO -->
             <article id="sec-inicio" class="seccion-bloque activa">
-                <div class="encabezado-seccion">
-                    <p class="numero-seccion">01 — BIENVENIDA</p>
-                    <h1>Tú <span>&</span> Yo</h1>
-                    <p class="subtitulo">Una historia que comenzó el <strong>13 de febrero de 2026</strong></p>
-                </div>
-                <div class="inicio-grid">
-                    <div class="foto-principal">
-                        <img src="img/portada.jpg" alt="Nuestra foto">
-                        <div class="marco-foto"></div>
-                    </div>
-                    <div class="contador-contenedor">
-                        <p class="contador-titulo">Llevamos juntos</p>
-                        <div class="numero-dias" id="dias">0</div>
-                        <p class="palabra-dias">días</p>
-                        <div class="separador"></div>
-                        <div class="contador-detalles">
-                            <div><strong id="meses">0</strong><span>meses</span></div>
-                            <div><strong id="horas">0</strong><span>horas</span></div>
-                            <div><strong id="minutos">0</strong><span>minutos</span></div>
+                <div class="tarjeta-hero">
+                    <div class="overlay-foto"></div>
+                    <div class="hero-contenido">
+                        <div class="encabezado-seccion">
+                            <p class="numero-seccion">01 — BIENVENIDA</p>
+                            <h1>Tú <span>&</span> Yo</h1>
+                            <p class="subtitulo">Una historia que comenzó el <strong>13 de febrero de 2026</strong></p>
+                        </div>
+
+                        <!-- CONTADOR TIEMPO JUNTOS -->
+                        <div class="contador-card">
+                            <h2 class="contador-titulo">Llevamos juntos</h2>
+                            
+                            <div class="dias-destacados">
+                                <span id="dias">0</span>
+                                <small>días</small>
+                            </div>
+
+                            <div class="grid-tiempo">
+                                <div class="caja-tiempo">
+                                    <strong id="horas">00</strong>
+                                    <span>Horas</span>
+                                </div>
+                                <div class="separador-dos-puntos">:</div>
+                                <div class="caja-tiempo">
+                                    <strong id="minutos">00</strong>
+                                    <span>Minutos</span>
+                                </div>
+                                <div class="separador-dos-puntos">:</div>
+                                <div class="caja-tiempo destacada">
+                                    <strong id="segundos">00</strong>
+                                    <span>Segundos</span>
+                                </div>
+                            </div>
+                            
+                            <p class="frase-amor">"Y cada segundo a tu lado cuenta para siempre ♡"</p>
                         </div>
                     </div>
                 </div>
             </article>
 
-            <!-- SECCIÓN HISTORIA -->
+            <!-- SECCIÓN 2: NUESTRA HISTORIA -->
             <article id="sec-historia" class="seccion-bloque" style="display: none;">
                 <div class="encabezado-seccion">
                     <p class="numero-seccion">02 — CÓMO EMPEZÓ TODO</p>
@@ -104,7 +118,7 @@
                 </div>
             </article>
 
-            <!-- SECCIÓN RECUERDOS -->
+            <!-- SECCIÓN 3: RECUERDOS -->
             <article id="sec-recuerdos" class="seccion-bloque" style="display: none;">
                 <div class="encabezado-seccion">
                     <p class="numero-seccion">03 — GALERÍA</p>
@@ -121,7 +135,7 @@
                 </div>
             </article>
 
-            <!-- SECCIÓN MOMENTOS -->
+            <!-- SECCIÓN 4: MOMENTOS -->
             <article id="sec-momentos" class="seccion-bloque" style="display: none;">
                 <div class="encabezado-seccion">
                     <p class="numero-seccion">04 — LÍNEA DEL TIEMPO</p>
@@ -138,7 +152,7 @@
                 </div>
             </article>
 
-            <!-- SECCIÓN CARTA -->
+            <!-- SECCIÓN 5: CARTA -->
             <article id="sec-carta" class="seccion-bloque" style="display: none;">
                 <div class="encabezado-seccion">
                     <p class="numero-seccion">05 — MI CORAZÓN</p>
@@ -150,6 +164,7 @@
                     <p class="firma">Con todo mi amor,<br><span>♡</span></p>
                 </div>
             </article>
+
         </section>
     </main>
 
