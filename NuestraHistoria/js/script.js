@@ -1,4 +1,4 @@
-// --- ACCIÓN DE CLIC EN EL FRASCO ---
+// --- ABRIR LA HISTORIA DESDE EL FRASCO ---
 function abrirHistoria() {
     const inicio = document.getElementById('pantalla-inicio');
     const principal = document.getElementById('pantalla-principal');
@@ -9,7 +9,7 @@ function abrirHistoria() {
     }
 }
 
-// --- CAMBIO DE VISTAS EN EL MENÚ ---
+// --- NAVEGACIÓN DEL MENÚ ---
 function mostrarSeccion(idSeccion, boton) {
     const bloques = document.querySelectorAll('.seccion-bloque');
     bloques.forEach(bloque => {
@@ -29,11 +29,10 @@ function mostrarSeccion(idSeccion, boton) {
     }
 }
 
-// --- CÁLCULO DEL TIEMPO JUNTOS DESDE EL 13/02/2026 ---
+// --- CÁLCULO DEL CONTADOR (Desde 13 de febrero de 2026) ---
 function calcularTiempoJuntos() {
     const fechaInicio = new Date('2026-02-13T00:00:00');
     const ahora = new Date();
-
     const diferenciaMs = ahora - fechaInicio;
 
     if (diferenciaMs >= 0) {
@@ -49,7 +48,7 @@ function calcularTiempoJuntos() {
     }
 }
 
-// --- AMPLIAR FOTOS EN LA GALERÍA ---
+// --- VISOR DE FOTOS ---
 function abrirFoto(ruta, titulo, fecha) {
     const visor = document.getElementById('visorFoto');
     const fotoGrande = document.getElementById('fotoGrande');
@@ -67,7 +66,7 @@ function cerrarFoto() {
     if (visor) visor.style.display = 'none';
 }
 
-// Cargar contador al iniciar
+// Inicializar el contador al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     calcularTiempoJuntos();
     setInterval(calcularTiempoJuntos, 1000);
