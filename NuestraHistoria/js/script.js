@@ -40,9 +40,7 @@ function mostrarSeccion(idSeccion, boton) {
     }
 }
 
-// --- 3. CÁLCULO EN TIEMPO REAL DEL CONTADOR (13 DE FEBRERO DE 2026) ---
-// --- CÁLCULO PRECISO (AÑOS, MESES, SEMANAS, DÍAS, HORAS, MINUTOS, SEGUNDOS) ---
-// --- CÁLCULO PRECISO (AÑOS, MESES, SEMANAS, DÍAS, HORAS, MINUTOS, SEGUNDOS) ---
+// --- 3. CÁLCULO PRECISO (AÑOS, MESES, SEMANAS, DÍAS, HORAS, MINUTOS, SEGUNDOS) ---
 function calcularTiempoJuntos() {
     // Fecha de inicio: 13 de febrero de 2026 (13/02/2026 00:00:00)
     const fechaInicio = new Date(2026, 1, 13, 0, 0, 0); 
@@ -103,10 +101,6 @@ function calcularTiempoJuntos() {
     }
 }
 
-// Ejecutar cada segundo
-setInterval(calcularTiempoJuntos, 1000);
-calcularTiempoJuntos();
-
 // --- 4. VISOR DE FOTOS ---
 function abrirFoto(ruta, titulo, fecha) {
     const visor = document.getElementById('visorFoto');
@@ -125,7 +119,7 @@ function cerrarFoto() {
     if (visor) visor.style.display = 'none';
 }
 
-// --- INICIALIZACIÓN CONTINUA ---
+// --- 5. INICIALIZACIÓN CONTINUA ---
 // Se ejecuta inmediatamente al cargar el script
 calcularTiempoJuntos();
 
